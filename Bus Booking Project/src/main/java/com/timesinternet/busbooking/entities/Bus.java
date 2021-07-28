@@ -1,4 +1,4 @@
-package com.timesinternet.busbooking.Entities;
+package com.timesinternet.busbooking.entities;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -8,23 +8,23 @@ import java.time.LocalDate;
 @Table
 public class Bus{
     @Id
-
-    private long busId;
+    @Column(length = 10)
+    private String busId;
     private String routeId;
 
     public Bus() {
     }
 
-    public Bus(long busId, String routeId) {
+    public Bus(String busId, String routeId) {
         this.busId = busId;
         this.routeId = routeId;
     }
 
-    public long getBusId() {
+    public String getBusId() {
         return busId;
     }
 
-    public void setBusId(long busId) {
+    public void setBusId(String busId) {
         this.busId = busId;
     }
 

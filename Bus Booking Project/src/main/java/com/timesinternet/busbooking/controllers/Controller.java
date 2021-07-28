@@ -1,6 +1,7 @@
-package com.timesinternet.busbooking.Controllers;
+package com.timesinternet.busbooking.controllers;
 
-import com.timesinternet.busbooking.Entities.Bus;
+import com.timesinternet.busbooking.entities.*;
+
 import com.timesinternet.busbooking.Services.ServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,12 @@ public class Controller {
 
 
   @PostMapping(value = "/search")
-    public List<Bus> AvailableBuses(
-          @RequestParam String fromCityId,
-          @RequestParam String toCityId
+    public List<abc> AvailableBuses(
+          @RequestParam String fromCityName,
+          @RequestParam String toCityName
           ){
 
-      return serviceLayer.availableBuses(fromCityId,toCityId);
+      return serviceLayer.availableBuses(fromCityName,toCityName);
 
   }
 
