@@ -1,6 +1,7 @@
 package com.timesinternet.busbooking.entities;
 
 import java.sql.Time;
+import java.util.*;
 
 public class AvailableBus {
 
