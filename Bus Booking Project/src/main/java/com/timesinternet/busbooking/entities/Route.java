@@ -1,4 +1,4 @@
-package com.timesinternet.busbooking.Entities;
+package com.timesinternet.busbooking.entities;
 
 import javax.persistence.*;
 import java.sql.Time;

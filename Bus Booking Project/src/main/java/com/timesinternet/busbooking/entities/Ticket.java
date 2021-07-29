@@ -1,4 +1,4 @@
-package com.timesinternet.busbooking.Entities;
+package com.timesinternet.busbooking.entities;
 
 import java.sql.Date;
 

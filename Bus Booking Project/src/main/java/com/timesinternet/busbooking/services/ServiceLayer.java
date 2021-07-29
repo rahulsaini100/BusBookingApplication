@@ -1,11 +1,11 @@
-package com.timesinternet.busbooking.Services;
+package com.timesinternet.busbooking.services;
 
-import com.timesinternet.busbooking.Entities.Bus;
-import com.timesinternet.busbooking.Repositories.BusRepository;
+import com.timesinternet.busbooking.entities.*;
+import com.timesinternet.busbooking.repositories.BusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
 @Service
@@ -18,9 +18,9 @@ public class ServiceLayer {
         this.busRepository = busRepository;
     }
 
-    public List<Bus> availableBuses(String fromCityId, String toCityId) {
+    public List<abc> availableBuses(String fromCityName, String toCityName) {
 
-    return  busRepository.FilterBus(fromCityId,toCityId);
+    return  busRepository.FindRoute(fromCityName,toCityName);
 
     }
 }
