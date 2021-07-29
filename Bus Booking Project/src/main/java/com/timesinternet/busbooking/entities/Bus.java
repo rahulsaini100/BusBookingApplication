@@ -1,6 +1,7 @@
 package com.timesinternet.busbooking.entities;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table
