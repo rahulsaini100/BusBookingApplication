@@ -1,14 +1,12 @@
 package com.timesinternet.busbooking.entities;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.time.LocalDate;
 
 @Entity
 @Table
 public class Bus{
     @Id
-    @Column(length = 10)
+
     private String busId;
     private String routeId;
 
