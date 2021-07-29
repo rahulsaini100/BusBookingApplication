@@ -1,4 +1,4 @@
-package com.timesinternet.busbooking.Services;
+package com.timesinternet.busbooking.services;
 
 import com.timesinternet.busbooking.entities.*;
 import com.timesinternet.busbooking.repositories.BusRepository;
