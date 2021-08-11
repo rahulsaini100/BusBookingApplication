@@ -1,6 +1,6 @@
 package com.timesinternet.busbooking.entities;
 
-import org.hibernate.annotations.GenericGenerator;
+
 
 import javax.persistence.*;
 

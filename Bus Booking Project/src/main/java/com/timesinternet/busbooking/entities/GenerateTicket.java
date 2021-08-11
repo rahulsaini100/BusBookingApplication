@@ -3,9 +3,9 @@ package com.timesinternet.busbooking.entities;
 import java.util.Date;
 
 public class GenerateTicket {
-	private long userId;
+	private long bookingId;
 	private String userName;
-	private String userPhoneNumber;
+	private String userPhonenumber;
 	private String userAddress;
 	private String busId;
 	private String startLocation;
@@ -15,14 +15,17 @@ public class GenerateTicket {
 	private long numberOfSeats;
 	private long totalFare;
 
-	
-	public GenerateTicket(long userId, String userName, String userPhoneNumber, String userAddress, String busId,
+	public GenerateTicket() {
+		super();
+	}
+
+	public GenerateTicket(long bookingId, String userName, String userPhonenumber, String userAddress, String busId,
 			String startLocation, String endLocation, Date dateOfBooking, Date journeyDate, long numberOfSeats,
 			long totalFare) {
 		super();
-		this.userId = userId;
+		this.bookingId = bookingId;
 		this.userName = userName;
-		this.userPhoneNumber = userPhoneNumber;
+		this.userPhonenumber = userPhonenumber;
 		this.userAddress = userAddress;
 		this.busId = busId;
 		this.startLocation = startLocation;
@@ -33,15 +36,12 @@ public class GenerateTicket {
 		this.totalFare = totalFare;
 	}
 
-	//long, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String,
-	//java.lang.String, java.util.Date, java.util.Date, long, long
-
-	public long getUserId() {
-		return userId;
+	public long getBookingId() {
+		return bookingId;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setBookingId(long bookingId) {
+		this.bookingId = bookingId;
 	}
 
 	public String getUserName() {
@@ -52,12 +52,12 @@ public class GenerateTicket {
 		this.userName = userName;
 	}
 
-	public String getUserPhoneNumber() {
-		return userPhoneNumber;
+	public String getUserPhonenumber() {
+		return userPhonenumber;
 	}
 
-	public void setUserPhoneNumber(String userPhoneNumber) {
-		this.userPhoneNumber = userPhoneNumber;
+	public void setUserPhonenumber(String userPhonenumber) {
+		this.userPhonenumber = userPhonenumber;
 	}
 
 	public String getUserAddress() {
@@ -76,6 +76,22 @@ public class GenerateTicket {
 		this.busId = busId;
 	}
 
+	public Date getDateOfBooking() {
+		return dateOfBooking;
+	}
+
+	public void setDateOfBooking(Date dateOfBooking) {
+		this.dateOfBooking = dateOfBooking;
+	}
+
+	public long getnumberOfSeats() {
+		return numberOfSeats;
+	}
+
+	public void setnumberOfSeats(long numberOfSeats) {
+		this.numberOfSeats = numberOfSeats;
+	}
+
 	public String getStartLocation() {
 		return startLocation;
 	}
@@ -92,30 +108,6 @@ public class GenerateTicket {
 		this.endLocation = endLocation;
 	}
 
-	public Date getDateOfBooking() {
-		return dateOfBooking;
-	}
-
-	public void setDateOfBooking(Date dateOfBooking) {
-		this.dateOfBooking = dateOfBooking;
-	}
-
-	public Date getJourneyDate() {
-		return journeyDate;
-	}
-
-	public void setJourneyDate(Date journeyDate) {
-		this.journeyDate = journeyDate;
-	}
-
-	public long getNumberOfSeats() {
-		return numberOfSeats;
-	}
-
-	public void setNumberOfSeats(long numberOfSeats) {
-		this.numberOfSeats = numberOfSeats;
-	}
-
 	public long getTotalFare() {
 		return totalFare;
 	}
@@ -124,8 +116,13 @@ public class GenerateTicket {
 		this.totalFare = totalFare;
 	}
 
-	// int, java.lang.String, java.lang.String, java.lang.String, java.lang.String,
-	// java.lang.String, java.lang.String, java.util.Date, java.util.Date, long,
-	// long
+	public Date getjourneyDate() {
+		return journeyDate;
+	}
+
+	public void setjourneyDate(Date journeyDate) {
+		this.journeyDate = journeyDate;
+	}
+//>>>>>>> branch 'main' of https://github.com/vikaxxxx/BusBookingApplication.git
 
 }
