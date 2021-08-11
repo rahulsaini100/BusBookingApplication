@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -20,7 +21,7 @@ public interface BusRepository extends JpaRepository<Bus,Long> {
     		+ "and r.toCityId=(SELECT cityId from City where cityname=?2)")
     
     List<abc>FindRoute(String fromCityName, String toCityName);
-    	
+    
     
     
 }

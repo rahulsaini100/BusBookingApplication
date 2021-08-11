@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.sql.Date;
 
 @RestController
 public class Controller {
@@ -28,5 +29,24 @@ public class Controller {
       return serviceLayer.availableBuses(fromCityName,toCityName);
 
   }
-
+    /////////////////////////////////////////////////////////////////////
+    
+    @PostMapping(value = "/saveuser")
+    	public long updateUserAndTicketTable(
+    			@RequestParam String userName,
+    			@RequestParam String userPhoneNumber,
+    			@RequestParam String userAddress
+    			) {
+    				Users u = new Users(userName, userPhoneNumber, userAddress);
+    				return serviceLayer.addNewUser(u);    				
+    }
+    	
+    ///////////////////////////////////////////////////////////////////
+    
+    @PostMapping(value = "/mybooking")
+    	public List<Ticket> myBookingFn(@RequestParam long userId){
+    	
+    	return serviceLayer.showBooking(userId);
+    	
+    }
 }
