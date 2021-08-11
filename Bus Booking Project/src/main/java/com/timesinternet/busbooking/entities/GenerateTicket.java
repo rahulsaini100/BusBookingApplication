@@ -3,7 +3,6 @@ package com.timesinternet.busbooking.entities;
 import java.util.Date;
 
 public class GenerateTicket {
-
 	private long bookingId;
 	private String userName;
 	private String userPhonenumber;
@@ -124,5 +123,6 @@ public class GenerateTicket {
 	public void setjourneyDate(Date journeyDate) {
 		this.journeyDate = journeyDate;
 	}
+//>>>>>>> branch 'main' of https://github.com/vikaxxxx/BusBookingApplication.git
 
 }

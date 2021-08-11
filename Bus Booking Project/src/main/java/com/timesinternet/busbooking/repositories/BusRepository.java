@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.sql.Date;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface BusRepository extends JpaRepository<AvailableBus, String> {
+
 
 	@Query("SELECT new com.timesinternet.busbooking.entities.AvailableBus(b.busId,r.arrivalTime,r.departureTime,b.busType,"
 			+ "b.busProvider,p.ticketPrice,s.totalSeat,s.totalSeat-IFNULL(t.numberOfSeats,0),r.routeId) "
