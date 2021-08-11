@@ -1,8 +1,5 @@
 package com.timesinternet.busbooking.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,17 +8,16 @@ import javax.persistence.Table;
 @Table
 public class Users {
 	@Id
-	@Column(length = 5)
-	private String userId;
+	private long userId;
 	private String userName;
 	private String userPhoneNumber;
 	private String userAddress;
-	
+
 	public Users() {
-		
+
 	}
-	
-	public Users(String userId, String userName, String userPhoneNumber, String userAddress) {
+
+	public Users(long userId, String userName, String userPhoneNumber, String userAddress) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -29,11 +25,11 @@ public class Users {
 		this.userAddress = userAddress;
 	}
 
-	public String getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -60,9 +56,5 @@ public class Users {
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-	
-	
-	
-	
-	
+
 }

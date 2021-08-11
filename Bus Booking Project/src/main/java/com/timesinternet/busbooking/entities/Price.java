@@ -1,7 +1,5 @@
 package com.timesinternet.busbooking.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,16 +11,16 @@ public class Price {
 	@Id
 	@Column(length = 5)
 	private String routeId;
-	private Long TicketPrice;
-	
+	private Long ticketPrice;
+
 	public Price() {
-		
+
 	}
 
 	public Price(String routeId, Long ticketPrice) {
 		super();
 		this.routeId = routeId;
-		TicketPrice = ticketPrice;
+		this.ticketPrice = ticketPrice;
 	}
 
 	public String getRouteId() {
@@ -34,13 +32,11 @@ public class Price {
 	}
 
 	public Long getTicketPrice() {
-		return TicketPrice;
+		return ticketPrice;
 	}
 
 	public void setTicketPrice(Long ticketPrice) {
-		TicketPrice = ticketPrice;
+		this.ticketPrice = ticketPrice;
 	}
-	
-	
-	
+
 }

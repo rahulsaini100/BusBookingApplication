@@ -2,47 +2,65 @@ package com.timesinternet.busbooking.entities;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table
 public class Ticket {
+
 	@Id
-	
-	private String bookingId;
-	private String userId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long bookingId;
+	private long userId;
 	private String busId;
-	private int numberofTicket;
+	private long numberOfSeats;
 	private Date dateOfBooking;
-	
-	public Ticket() {
-		
+	private Date journeyDate;
+	private String routeId;
+
+	public Ticket(long userId, String busId, String routeId, long numberOfSeats, Date journeyDate) {
+		super();
+		this.userId = userId;
+		this.busId = busId;
+		this.numberOfSeats = numberOfSeats;
+		this.journeyDate = journeyDate;
+		this.routeId = routeId;
 	}
 
-	public Ticket(String bookingId, String userId, String busId, int numberofTicket, Date dateOfBooking) {
+	public Ticket(long bookingId, long userId, String busId, long numberOfSeats, Date dateOfBooking, Date journeyDate,
+			String routeId) {
 		super();
 		this.bookingId = bookingId;
 		this.userId = userId;
 		this.busId = busId;
-		this.numberofTicket = numberofTicket;
+		this.numberOfSeats = numberOfSeats;
 		this.dateOfBooking = dateOfBooking;
+		this.journeyDate = journeyDate;
+		this.routeId = routeId;
 	}
 
-	public String getBookingId() {
+	public Ticket() {
+
+	}
+
+	public long getBookingId() {
 		return bookingId;
 	}
 
-	public void setBookingId(String bookingId) {
+	public void setBookingId(long bookingId) {
 		this.bookingId = bookingId;
 	}
 
-	public String getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -54,12 +72,12 @@ public class Ticket {
 		this.busId = busId;
 	}
 
-	public int getNumberofTicket() {
-		return numberofTicket;
+	public long getnumberOfSeats() {
+		return numberOfSeats;
 	}
 
-	public void setNumberofTicket(int numberofTicket) {
-		this.numberofTicket = numberofTicket;
+	public void setnumberOfSeats(long numberOfSeats) {
+		this.numberOfSeats = numberOfSeats;
 	}
 
 	public Date getDateOfBooking() {
@@ -69,7 +87,21 @@ public class Ticket {
 	public void setDateOfBooking(Date dateOfBooking) {
 		this.dateOfBooking = dateOfBooking;
 	}
-	
-	
+
+	public String getRouteId() {
+		return routeId;
+	}
+
+	public void setRouteId(String routeId) {
+		this.routeId = routeId;
+	}
+
+	public Date getjourneyDate() {
+		return journeyDate;
+	}
+
+	public void setjourneyDate(Date journeyDate) {
+		this.journeyDate = journeyDate;
+	}
 
 }
