@@ -15,13 +15,8 @@ public class Users {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long userId;
 	
-	@Column(name="userName")
 	private String userName;
-	
-	@Column(name="userPhoneNumber")
 	private String userPhoneNumber;
-	
-	@Column(name="userAddress")
 	private String userAddress;
 
 	public Users() {
