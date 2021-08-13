@@ -7,13 +7,12 @@ import com.timesinternet.busbooking.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-//<<<<<<< HEAD
 import java.util.*;
 import java.sql.Date;
-//=======
+
 import java.sql.Date;
 import java.util.List;
-//>>>>>>> branch 'main' of https://github.com/vikaxxxx/BusBookingApplication.git
+
 
 @RestController
 public class Controller {
@@ -43,7 +42,6 @@ public class Controller {
     				return serviceLayer.addNewUser(u);    				
     }
     	
-    ///////////////////////////////////////////////////////////////////
     
     @PostMapping(value = "/mybooking")
     	public List<GenerateTicket> myBookingFn(@RequestParam long userId){
@@ -57,5 +55,4 @@ public class Controller {
 		Ticket ticket = new Ticket(userId, busId, routeId, numberOfSeats, journeyDate);
 		return serviceLayer.ticketGeneration(ticket);
 	}
-//>>>>>>> branch 'main' of https://github.com/vikaxxxx/BusBookingApplication.git
 }
