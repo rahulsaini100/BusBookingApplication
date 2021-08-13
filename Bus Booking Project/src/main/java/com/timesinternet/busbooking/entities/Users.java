@@ -11,38 +11,25 @@ import javax.persistence.Table;
 @Table
 public class Users {
 	@Id
-//<<<<<<< HEAD
 	@Column(name="userId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long userId;
 	
-	@Column(name="userName")
-//=======
-	//private long userId;
-//>>>>>>> branch 'main' of https://github.com/vikaxxxx/BusBookingApplication.git
 	private String userName;
-	
-	@Column(name="userPhoneNumber")
 	private String userPhoneNumber;
-	
-	@Column(name="userAddress")
 	private String userAddress;
 
 	public Users() {
 
 	}
-//<<<<<<< HEAD
 	
 	public Users( String userName, String userPhoneNumber, String userAddress) {
 		this.userName = userName;
 		this.userPhoneNumber = userPhoneNumber;
 		this.userAddress = userAddress;
 	} 
-	//public Users(int userId, String userName, String userPhoneNumber, String userAddress) {
-//=======
 
 	public Users(long userId, String userName, String userPhoneNumber, String userAddress) {
-//>>>>>>> branch 'main' of https://github.com/vikaxxxx/BusBookingApplication.git
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -54,11 +41,7 @@ public class Users {
 		return userId;
 	}
 
-//<<<<<<< HEAD
-	//public void setUserId(int userId) {
-//=======
 	public void setUserId(long userId) {
-//>>>>>>> branch 'main' of https://github.com/vikaxxxx/BusBookingApplication.git
 		this.userId = userId;
 	}
 
