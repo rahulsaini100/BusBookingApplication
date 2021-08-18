@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 
 @Repository
-public interface UsersRepository extends JpaRepository<Users,Long> {
-    Optional<Users> findUsersByUserPhoneNumber(String userPhoneNumber);   
+public interface CityRepository extends JpaRepository<City,String> {
+	
+      Optional<City> findByCityName(String cityName);
 }

@@ -3,7 +3,11 @@ package com.timesinternet.busbooking.controllers;
 import com.timesinternet.busbooking.services.*;
 
 import com.timesinternet.busbooking.entities.*;
+
 import com.timesinternet.busbooking.repositories.UsersRepository;
+
+import com.timesinternet.busbooking.repositories.CityRepository;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,24 +17,52 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.*;
 import java.sql.Date;
 
+
 import java.sql.Date;
 import java.util.regex.Pattern;
+
 
 @RestController
 public class Controller {
 
 	private final ServiceLayer serviceLayer;
-	private final UsersRepository usersRepository;
 
+	private final UsersRepository usersRepository;
+  private final CityRepository cityRepository;
+ 
 	@Autowired
-	public Controller(ServiceLayer serviceLayer, UsersRepository usersRepository) {
+	 public Controller(ServiceLayer serviceLayer, UsersRepository usersRepository,CityRepository cityRepository) {
 		this.serviceLayer = serviceLayer;
 		this.usersRepository = usersRepository;
+		this.cityRepository = cityRepository;
 	}
 
 	@PostMapping(value = "/search")
 	public List<AvailableBus> AvailableBuses(@RequestParam String fromCityName, @RequestParam String toCityName,
 			@RequestParam Date journeyDate, @RequestParam long numberOfPassenger) {
+
+		if (fromCityName.equals(toCityName)) {
+
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"From city and To city can not be same. Choose Again");
+		}
+
+		Optional<City> cityOptional = cityRepository.findByCityName(fromCityName);
+		Optional<City> cityOptional1 = cityRepository.findByCityName(toCityName);
+		
+		
+		if (!cityOptional.isPresent() && !cityOptional1.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"No bus Available from city to To city. Choose your citites again!");
+		
+		}
+		if (!cityOptional.isPresent() ) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"No bus Start from this city. Choose your From city again!");
+		
+		}
+		
+		if (!cityOptional1.isPresent()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"No Bus goes to this Location. Choose your To city again!");
+		
+		}
 
 		return serviceLayer.availableBuses(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
@@ -39,6 +71,7 @@ public class Controller {
 	@PostMapping(value = "/saveuser")
 	public long updateUserAndTicketTable(@RequestParam String userName, @RequestParam String userPhoneNumber,
 			@RequestParam String userAddress) {
+
 		
 		Users u = new Users(userName, userPhoneNumber, userAddress);
 
@@ -70,6 +103,9 @@ public class Controller {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"User Address should be less than 100 characters");
 		}
 		
+
+		Users u = new Users(userName, userPhoneNumber, userAddress);
+
 		return serviceLayer.addNewUser(u);
 	}
 
