@@ -104,7 +104,6 @@ public class Controller {
 		}
 		
 
-		Users u = new Users(userName, userPhoneNumber, userAddress);
 
 		return serviceLayer.addNewUser(u);
 	}
