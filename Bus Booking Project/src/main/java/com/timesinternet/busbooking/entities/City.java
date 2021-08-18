@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table
 public class City {
     @Id
-   @Column(length = 5)
+    @Column(length = 5)
     private String cityId;
     private String cityName;
 
