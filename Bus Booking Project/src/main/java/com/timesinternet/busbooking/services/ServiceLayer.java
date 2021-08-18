@@ -2,11 +2,14 @@ package com.timesinternet.busbooking.services;
 
 import com.timesinternet.busbooking.entities.*;
 import com.timesinternet.busbooking.repositories.BusRepository;
+import com.timesinternet.busbooking.repositories.CityRepository;
 import com.timesinternet.busbooking.repositories.TicketRepository;
 
 import com.timesinternet.busbooking.repositories.UsersRepository;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 //import java.util.Date;
@@ -22,6 +25,7 @@ public class ServiceLayer {
 	private final BusRepository busRepository;
 	private final UsersRepository usersRepository;
 	private final TicketRepository ticketRepository;
+	
 
 	@Autowired
 	public ServiceLayer(BusRepository busRepository, UsersRepository usersRepository,
@@ -29,12 +33,13 @@ public class ServiceLayer {
 		this.busRepository = busRepository;
 		this.usersRepository = usersRepository;
 		this.ticketRepository = ticketRepository;
+		
 	}
 
 
 	public List<AvailableBus> availableBuses(String fromCityName, String toCityName, Date journeyDate,
-			long numberOfPassenger) {
-
+			long numberOfPassenger) {	
+		
 		return busRepository.FindRoute(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
 	}
