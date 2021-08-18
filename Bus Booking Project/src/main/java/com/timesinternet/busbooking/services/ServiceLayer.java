@@ -15,6 +15,7 @@ import java.sql.Date;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Service
 public class ServiceLayer {
@@ -40,21 +41,6 @@ public class ServiceLayer {
 	}
 
 	public long addNewUser(Users u) {
-
-		Optional<Users> usersOptional = usersRepository.findUsersByUserPhoneNumber(u.getUserPhoneNumber());
-
-		if (usersOptional.isPresent()) {
-			throw new IllegalStateException("Number already Registered. Use a different number");
-		}
-		if(u.getUserPhoneNumber().length()!=10) {
-			throw new IllegalStateException("Phone number should be of 10 digits");
-		}
-		if(u.getUserName().length()>25) {
-			throw new IllegalStateException("User Name should be less than 25 characters");
-		}
-		if(u.getUserAddress().length()>100) {
-			throw new IllegalStateException("User Address should be less than 100 characters");
-		}
 
 		usersRepository.save(u);
 		long id = u.getUserId();
