@@ -60,4 +60,9 @@ public class ServiceLayer {
 		return ticketRepository.FindTicket(bookingId);
 
 	}
+
+	public long MaxAvailableSeats(String fromCityName, String toCityName, Date journeyDate) {
+
+		return busRepository.MaxSeats(fromCityName, toCityName, journeyDate);
+	}
 }

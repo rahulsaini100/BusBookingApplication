@@ -54,6 +54,21 @@ public class SearchController {
 
 		}
 
+		if (numberOfPassenger > 50) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+					"Number of Passengers should not exceed 50. Enter Number of Passengers again!");
+
+		}
+
+		long MaxAvailableSeats = serviceLayer.MaxAvailableSeats(fromCityName, toCityName, journeyDate);
+
+		if (MaxAvailableSeats < numberOfPassenger) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+					"Maximum Available Seats for particular route are " + MaxAvailableSeats
+							+ ".Enter Number of Passengers less than or Equal to " + MaxAvailableSeats
+							+ " and try Again!");
+		}
+
 		return serviceLayer.availableBuses(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
 	}

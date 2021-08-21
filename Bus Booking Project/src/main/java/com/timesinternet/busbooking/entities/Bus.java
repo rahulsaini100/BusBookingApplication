@@ -13,7 +13,7 @@ public class Bus{
     private String busId;
     private String routeId;
     private String busType;
-   private String busProvider;
+    private String busProvider;
    
     
     public Bus() {
