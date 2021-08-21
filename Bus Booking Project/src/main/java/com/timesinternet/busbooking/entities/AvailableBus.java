@@ -2,12 +2,8 @@ package com.timesinternet.busbooking.entities;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class AvailableBus {
-	@Id
+
 	private String busId;
 	private Date departureTime;
 	private Date arrivalTime;
