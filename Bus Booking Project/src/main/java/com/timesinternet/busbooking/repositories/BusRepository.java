@@ -31,6 +31,8 @@ public interface BusRepository extends JpaRepository<Bus, String> {
 			+ "LEFT JOIN Ticket as t on t.busId=s.busId and t.journeyDate=?3 "
 			+ "WHERE r.fromCityId=(SELECT cityId from City where cityname=?1) "
 			+ "and r.toCityId=(SELECT cityId from City where cityname=?2)")
-	long MaxSeats(String fromCityName, String toCityName, Date journeyDate);
+   String MaxSeats(String fromCityName, String toCityName, Date journeyDate);
+	
+	
 
 }

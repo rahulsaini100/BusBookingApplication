@@ -11,23 +11,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class BusRepositoryTest {
-	
+
 	@Autowired
 	private BusRepository undertest;
 
 	@Test
 	void testFindRoute() {
-		
-		String fromCityName="Ambala";
-		String toCityName="Yamuna Nagar";
+
+		String fromCityName = "Ambala";
+		String toCityName = "Yamuna Nagar";
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(2021,8,21);
-		Date journeyDate= calendar.getTime();
-		long numberOfPassenger=5;
-		
-      assertThat(undertest.FindRoute(fromCityName, toCityName, journeyDate, numberOfPassenger)).isNotEmpty();
-		
+		calendar.set(2021, 8, 30);
+		Date journeyDate = calendar.getTime();
+		long numberOfPassenger = 5;
+
+		assertThat(undertest.FindRoute(fromCityName, toCityName, journeyDate, numberOfPassenger)).isNotEmpty();
+
 	}
-	
+
 
 }
