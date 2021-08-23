@@ -2,6 +2,7 @@ package com.timesinternet.busbooking.services;
 
 import com.timesinternet.busbooking.entities.*;
 import com.timesinternet.busbooking.repositories.BusRepository;
+import com.timesinternet.busbooking.repositories.CityRepository;
 import com.timesinternet.busbooking.repositories.TicketRepository;
 
 import com.timesinternet.busbooking.repositories.UsersRepository;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServiceLayer {
@@ -21,13 +23,16 @@ public class ServiceLayer {
 	private final BusRepository busRepository;
 	private final UsersRepository usersRepository;
 	private final TicketRepository ticketRepository;
+	private final CityRepository cityRepository;
 
 	@Autowired
 	public ServiceLayer(BusRepository busRepository, UsersRepository usersRepository,
-			TicketRepository ticketRepository) {
+			TicketRepository ticketRepository,CityRepository cityRepository) {
 		this.busRepository = busRepository;
 		this.usersRepository = usersRepository;
 		this.ticketRepository = ticketRepository;
+		this.cityRepository = cityRepository;
+		
 
 	}
 
@@ -61,8 +66,16 @@ public class ServiceLayer {
 
 	}
 
-	public long MaxAvailableSeats(String fromCityName, String toCityName, Date journeyDate) {
+	public String MaxAvailableSeats(String fromCityName, String toCityName, Date journeyDate) {
 
 		return busRepository.MaxSeats(fromCityName, toCityName, journeyDate);
 	}
+
+	public Optional<City> findByCityName(String fromCityName) {
+		
+		return 	cityRepository.findByCityName(fromCityName);
+		
+	
+	}
+	
 }
