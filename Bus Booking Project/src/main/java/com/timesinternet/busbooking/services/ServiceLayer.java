@@ -37,18 +37,26 @@ public class ServiceLayer {
 		return busRepository.FindRoute(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
 	}
-
+	
+	// This method takes object of type Users and saves it in database. Also it return Id of the user 
 	public long addNewUser(Users u) {
 
 		usersRepository.save(u);
 		long id = u.getUserId();
 		return id;
-
 	}
-
+	
+	// This method takes userId as input and returns list of ticket booked by user 
+	// It uses allTicket method of ticketRepository
+	
 	public List<GenerateTicket> showBooking(long userId) {
 
 		return ticketRepository.allTicket(userId);
+	}
+	
+	public List<GenerateTicket> showBooking2(String userPhoneNumber) {
+
+		return ticketRepository.allTicket2(userPhoneNumber);
 	}
 
 	public GenerateTicket ticketGeneration(Ticket ticket) {
