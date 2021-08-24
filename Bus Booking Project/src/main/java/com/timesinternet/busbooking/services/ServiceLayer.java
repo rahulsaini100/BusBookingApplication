@@ -105,6 +105,7 @@ public class ServiceLayer {
 	 * @param journeyDate
 	 * @return maximum available seats 
 	 */
+
 	public String MaxAvailableSeats(String fromCityName, String toCityName, Date journeyDate) {
 
 		return busRepository.MaxSeats(fromCityName, toCityName, journeyDate);

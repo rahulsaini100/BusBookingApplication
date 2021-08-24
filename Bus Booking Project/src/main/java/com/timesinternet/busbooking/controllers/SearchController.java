@@ -54,6 +54,7 @@ public class SearchController {
 		/**
 		 * checks if fromCityName is present in database or not
 		 */
+
 		Optional<City> cityOptional = serviceLayer.findByCityName(fromCityName);
 		/**
 		 * checks if toCityName is present in database or not
@@ -104,7 +105,6 @@ public class SearchController {
 					"Number of Passengers should not exceed 50. Enter Number of Passengers again!");
 
 		}
-
 
 		int Maxseats=Integer.parseInt(MaxAvailableSeats);  
         
