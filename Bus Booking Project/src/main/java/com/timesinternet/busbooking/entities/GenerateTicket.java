@@ -10,6 +10,7 @@ import java.util.Date;
  *
  */
 public class GenerateTicket {
+	private long userId;
 	private long bookingId;
 	private String userName;
 	private String userPhonenumber;
@@ -59,7 +60,41 @@ public class GenerateTicket {
 		this.numberOfSeats = numberOfSeats;
 		this.totalFare = totalFare;
 	}
+	
+	
 
+	public GenerateTicket(long userId, long bookingId, String userName, String userPhonenumber, String userAddress,
+			String busId, String startLocation, String endLocation, Date dateOfBooking, Date journeyDate,
+			long numberOfSeats, long totalFare) {
+		super();
+		this.userId = userId;
+		this.bookingId = bookingId;
+		this.userName = userName;
+		this.userPhonenumber = userPhonenumber;
+		this.userAddress = userAddress;
+		this.busId = busId;
+		this.startLocation = startLocation;
+		this.endLocation = endLocation;
+		this.dateOfBooking = dateOfBooking;
+		this.journeyDate = journeyDate;
+		this.numberOfSeats = numberOfSeats;
+		this.totalFare = totalFare;
+	}
+	
+	/**
+	 * 
+	 * @return userId
+	 */
+	public long getUserId() {
+		return userId;
+	}
+	/**
+	 * sets userId
+	 * @param userId
+	 */
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 	/**
 	 * 
 	 * @return bookingId
