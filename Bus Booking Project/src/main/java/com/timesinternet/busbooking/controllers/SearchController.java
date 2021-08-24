@@ -3,7 +3,6 @@ package com.timesinternet.busbooking.controllers;
 import com.timesinternet.busbooking.services.*;
 
 import com.timesinternet.busbooking.entities.*;
-import com.timesinternet.busbooking.repositories.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,77 +11,113 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.*;
 import java.sql.Date;
 
-// This is a controller class which contains url for search API
+/**
+ * This controller contains url for search API
+ * @author Rahul.Saini
+ *
+ */
 @RestController
 public class SearchController {
 
 	private final ServiceLayer serviceLayer;
-	private final CityRepository cityRepository;
-
+	/**
+	 * constructor
+	 * @param serviceLayer
+	 */
 	@Autowired
-	public SearchController(ServiceLayer serviceLayer, CityRepository cityRepository) {
+	public SearchController(ServiceLayer serviceLayer) {
 		this.serviceLayer = serviceLayer;
-		this.cityRepository = cityRepository;
+		
 	}
 	
-	//This takes inputs from user according to his/her needs 
-	//The inputs are fromCityName(source city), toCityName(destination city) , journeyDate and number of passengers
-	// There are some validations which must be followed in order to get proper output
-	// Validations are From city and To city can not be same , number of passengers should not be greater than 50
-	// It also call methods from service layer
+	/**
+	 * This is an endpoint which takes inputs , checks validation and if all the validations passes
+	 * it returns list of AvailableBus 
+	 * @param fromCityName
+	 * @param toCityName
+	 * @param journeyDate
+	 * @param numberOfPassenger
+	 * @return
+	 */
 	@PostMapping(value = "/search")
 	public List<AvailableBus> AvailableBuses(@RequestParam String fromCityName, @RequestParam String toCityName,
 			@RequestParam Date journeyDate, @RequestParam long numberOfPassenger) {
-		
-		//if source and destination city are same then it returns error 400 along with message
+		/**
+		 * checks if fromCityName and toCityName are same or different
+		 */
 		if (fromCityName.equals(toCityName)) {
 
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 					"From city and To city can not be same. Choose Again");
 		}
 
-		Optional<City> cityOptional = cityRepository.findByCityName(fromCityName);
-		Optional<City> cityOptional1 = cityRepository.findByCityName(toCityName);
+		/**
+		 * checks if fromCityName is present in database or not
+		 */
+		Optional<City> cityOptional = serviceLayer.findByCityName(fromCityName);
+		/**
+		 * checks if toCityName is present in database or not
+		 */
+		Optional<City> cityOptional1 = serviceLayer.findByCityName(toCityName);
 		
-		// If there is no such cities in database than it returns error 400 along with message
+		/**
+		 * returns error 400
+		 */
 		if (!cityOptional.isPresent() && !cityOptional1.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-					"No bus Available from city to To city. Choose your citites again!");
+					"From And To city Not found in Our locations. Choose Any District from Haryana as locations!");
 
 		}
-		// If there is no such city in database as source city then it returns error 400 along with message
+
+		/**
+		 * returns error 400
+		 */
 		if (!cityOptional.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-					"No bus Start from this city. Choose your From city again!");
+					"From city Not found in our locations. Choose Any District from Haryana as From city!");
 
 		}
-
-		// If there is no such city in database as destination city then it returns error 400 along with message
+		/**
+		 * returns error 400
+		 */
 		if (!cityOptional1.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-					"No Bus goes to this Location. Choose your To city again!");
+					"To city Not found in our locations. Choose Any District from Haryana as To city!");
 
 		}
-
-		// If number of passengers is greater than 50 then it returns error 400 along with message
+		/**
+		 * finds maximum available seats 
+		 */
+		String MaxAvailableSeats = serviceLayer.MaxAvailableSeats(fromCityName, toCityName, journeyDate);
+		
+		/**
+		 * returns error 400
+		 */
+		if (MaxAvailableSeats == null) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Oh Sorry. No Bus available on this route!");
+		}
+		/**
+		 * returns error 400
+		 */
 		if (numberOfPassenger > 50) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 					"Number of Passengers should not exceed 50. Enter Number of Passengers again!");
 
 		}
-		
-		// to find maximum available seat in bus
-		long MaxAvailableSeats = serviceLayer.MaxAvailableSeats(fromCityName, toCityName, journeyDate);
-		
-		// if total available seats are less than the users requirement then it returns error 400 along with message
-		if (MaxAvailableSeats < numberOfPassenger) {
+
+
+		int Maxseats=Integer.parseInt(MaxAvailableSeats);  
+        
+		/**
+		 * returns error 400
+		 */
+		if (Maxseats< numberOfPassenger) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 					"Maximum Available Seats for particular route are " + MaxAvailableSeats
 							+ ".Enter Number of Passengers less than or Equal to " + MaxAvailableSeats
 							+ " and try Again!");
 		}
-		
-		// calls availableBuses method of service layer
+
 		return serviceLayer.availableBuses(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
 	}

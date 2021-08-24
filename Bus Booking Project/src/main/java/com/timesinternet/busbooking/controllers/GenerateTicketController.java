@@ -12,7 +12,11 @@ import com.timesinternet.busbooking.entities.Ticket;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
 
-//This is a controller class which contains url for generateTicket API 
+/**
+ * This is a controller class which contains url for generateTicket API 
+ * @author Rahul.Saini
+ *
+ */
 @RestController
 public class GenerateTicketController {
 
@@ -23,8 +27,16 @@ public class GenerateTicketController {
 		this.serviceLayer = serviceLayer;
 	}
 	
-	// generateTicket API takes userId, busId, routeId, numberOfSeats, journeyDate as input
-	// and returns a generateTicket type object which the help of a method ticketGeneration of service layer
+	/**
+	 * generateTicket API takes input
+	 * and returns a generateTicket type object which the help of a method ticketGeneration of service layer
+	 * @param userId
+	 * @param busId
+	 * @param routeId
+	 * @param numberOfSeats
+	 * @param journeyDate
+	 * @return
+	 */
 	@PostMapping(value = "/generateticket")
 	public GenerateTicket generateTicket(@RequestParam long userId, @RequestParam String busId,
 			@RequestParam String routeId, @RequestParam long numberOfSeats, @RequestParam Date journeyDate) {

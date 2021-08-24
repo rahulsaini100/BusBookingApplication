@@ -2,6 +2,7 @@ package com.timesinternet.busbooking.services;
 
 import com.timesinternet.busbooking.entities.*;
 import com.timesinternet.busbooking.repositories.BusRepository;
+import com.timesinternet.busbooking.repositories.CityRepository;
 import com.timesinternet.busbooking.repositories.TicketRepository;
 
 import com.timesinternet.busbooking.repositories.UsersRepository;
@@ -14,32 +15,57 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 
 import java.util.List;
+import java.util.Optional;
 
-
+/**
+ * It contains methods which interacts with controllers and repositories
+ * @author Rahul.Saini and Vikas.Sahani
+ *
+ */
 @Service
 public class ServiceLayer {
 
 	private final BusRepository busRepository;
 	private final UsersRepository usersRepository;
 	private final TicketRepository ticketRepository;
-
+	private final CityRepository cityRepository;
+	/**
+	 * constructs and initializes the ServiceLayer class
+	 * @param busRepository
+	 * @param usersRepository
+	 * @param ticketRepository
+	 * @param cityRepository
+	 */
 	@Autowired
 	public ServiceLayer(BusRepository busRepository, UsersRepository usersRepository,
-			TicketRepository ticketRepository) {
+			TicketRepository ticketRepository,CityRepository cityRepository) {
 		this.busRepository = busRepository;
 		this.usersRepository = usersRepository;
 		this.ticketRepository = ticketRepository;
+		this.cityRepository = cityRepository;
+		
 
 	}
 	
-
+	/**
+	 * returns list of AvailableBus with the halp of FindRoute method of busRepository
+	 * @param fromCityName
+	 * @param toCityName
+	 * @param journeyDate
+	 * @param numberOfPassenger
+	 * @return
+	 */
 	public List<AvailableBus> availableBuses(String fromCityName, String toCityName, Date journeyDate,
 			long numberOfPassenger) {
 
 		return busRepository.FindRoute(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
 	}
-	 
+	/**
+	 * adds new user to database  
+	 * @param users object
+	 * @return userId
+	 */
 	public long addNewUser(Users u) {
 
 		usersRepository.save(u);
@@ -48,11 +74,20 @@ public class ServiceLayer {
 
 	}
 	
+	/**
+	 * shows all the tickets booked by that userPhonenumber
+	 * @param userPhoneNumber
+	 * @return list of ticket
+	 */
 	public List<GenerateTicket> showBooking(String userPhoneNumber) {
 
 		return ticketRepository.allTicket(userPhoneNumber);
 	}
-	
+	/**
+	 * generates the ticket with the help of FindTicket method of ticketRepository
+	 * @param ticket
+	 * @return
+	 */
 	public GenerateTicket ticketGeneration(Ticket ticket) {
 		long millis = System.currentTimeMillis();
 		Date date = new Date(millis);
@@ -63,8 +98,28 @@ public class ServiceLayer {
 
 	}
 	
-	public long MaxAvailableSeats(String fromCityName, String toCityName, Date journeyDate) {
+	/**
+	 * finds maximum available seats with the help of MaxSeat method of busRepository
+	 * @param fromCityName
+	 * @param toCityName
+	 * @param journeyDate
+	 * @return maximum available seats 
+	 */
+	public String MaxAvailableSeats(String fromCityName, String toCityName, Date journeyDate) {
 
 		return busRepository.MaxSeats(fromCityName, toCityName, journeyDate);
 	}
+	
+	/**
+	 * finds weather a city is present in database or not
+	 * @param fromCityName
+	 * @return boolean
+	 */
+	public Optional<City> findByCityName(String fromCityName) {
+		
+		return 	cityRepository.findByCityName(fromCityName);
+		
+	
+	}
+	
 }
