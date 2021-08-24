@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.timesinternet.busbooking.entities.Users;
-import com.timesinternet.busbooking.repositories.UsersRepository;
+
 import com.timesinternet.busbooking.services.ServiceLayer;
 
 /**
@@ -22,12 +22,11 @@ import com.timesinternet.busbooking.services.ServiceLayer;
  */
 @RestController
 public class SaveUserController {
-	private final UsersRepository usersRepository;
+	
 	private final ServiceLayer serviceLayer;
 
 	@Autowired
-	public SaveUserController(UsersRepository usersRepository, ServiceLayer serviceLayer) {
-		this.usersRepository = usersRepository;
+	public SaveUserController(ServiceLayer serviceLayer) {
 		this.serviceLayer = serviceLayer;
 	}
 
@@ -49,11 +48,11 @@ public class SaveUserController {
 			@RequestParam String userAddress) {
 
 		Users u = new Users(userName, userPhoneNumber, userAddress);
-		/**
+	/**
 		 *  checks weather userPhoneNumberAlready exists in database r
 		 */
-		Optional<Users> usersOptional = usersRepository.findUsersByUserPhoneNumber(u.getUserPhoneNumber());
-		
+		Optional<Users> usersOptional = serviceLayer.findUsersByUserPhoneNumber(u.getUserPhoneNumber());	
+	
 		/**
 		 * checks validity on userPhoneNumber.
 		 * Phone number should be of 10 digits 0-9
@@ -76,11 +75,7 @@ public class SaveUserController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 					"Number already Registered. Use a different number");
 		}
-		
-		
-		
-		
-		
+	
 		/**
 		 * if phone number's length is not equal to 10 then it returns error 400 along with message
 		 */

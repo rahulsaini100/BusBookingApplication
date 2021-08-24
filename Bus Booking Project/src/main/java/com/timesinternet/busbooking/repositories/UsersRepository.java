@@ -14,11 +14,13 @@ import java.util.Optional;
  */
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Long> {
+
 	/**
 	 * This checks weather a Phone number exists in database or not
 	 * @param userPhoneNumber
 	 * @return
 	 */
+
 	Optional<Users> findUsersByUserPhoneNumber(String userPhoneNumber);
 	
 }
