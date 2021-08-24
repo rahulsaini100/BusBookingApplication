@@ -2,6 +2,9 @@ package com.timesinternet.busbooking.entities;
 
 import java.util.Date;
 
+// This is a class which has all the details of the buses which falls under the user's requirement 
+// It has attributes busId, departureTime, arrivalTime, busType, busProvider, ticketPrice, totalSeats, availableSeat and routeId
+
 public class AvailableBus {
 
 	private String busId;
@@ -14,6 +17,7 @@ public class AvailableBus {
 	private long availableSeat;
 	private String routeId;
 
+	// Constructors
 	public AvailableBus() {
 		super();
 	}
@@ -32,6 +36,8 @@ public class AvailableBus {
 		this.routeId = routeId;
 	}
 
+	
+	// Getters and Setters 
 	public long getTotalSeats() {
 		return totalSeats;
 	}

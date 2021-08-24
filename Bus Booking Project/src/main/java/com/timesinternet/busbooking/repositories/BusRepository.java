@@ -10,11 +10,11 @@ import java.util.Date;
 
 import java.util.List;
 
-
+//This is the busRepository which contains many queries
 @Repository
 public interface BusRepository extends JpaRepository<Bus, String> {
 
-
+	//This query returns all the routes available on the basis of user's need
 	@Query("SELECT new com.timesinternet.busbooking.entities.AvailableBus(b.busId,r.arrivalTime,r.departureTime,b.busType,"
 			+ "b.busProvider,p.ticketPrice,s.totalSeat,s.totalSeat-IFNULL(t.numberOfSeats,0),r.routeId) "
 			+ "from Bus as b INNER JOIN Route as r on b.routeId=r.routeId "
@@ -24,6 +24,8 @@ public interface BusRepository extends JpaRepository<Bus, String> {
 			+ "and r.toCityId=(SELECT cityId from City where cityname=?2) and s.totalSeat-IFNULL(t.numberOfSeats,0)>=?4")
 	List<AvailableBus> FindRoute(String fromCityName, String toCityName, Date journeyDate, long numberOfPassenger);
 
+	
+	//This query returns the maximum number of seats left on a bus on the input of source city, destination city & journey date
 	@Query("SELECT Max(s.totalSeat-IFNULL(t.numberOfSeats,0)) "
 			+ "from Bus as b INNER JOIN Route as r on b.routeId=r.routeId "
 			+ "INNER JOIN Price as p on p.routeId=b.routeId " 

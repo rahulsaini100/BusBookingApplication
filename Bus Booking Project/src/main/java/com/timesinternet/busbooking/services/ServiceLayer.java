@@ -17,6 +17,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class ServiceLayer {
 
@@ -35,6 +36,7 @@ public class ServiceLayer {
 		
 
 	}
+	
 
 	public List<AvailableBus> availableBuses(String fromCityName, String toCityName, Date journeyDate,
 			long numberOfPassenger) {
@@ -42,7 +44,7 @@ public class ServiceLayer {
 		return busRepository.FindRoute(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
 	}
-
+	 
 	public long addNewUser(Users u) {
 
 		usersRepository.save(u);
@@ -50,12 +52,12 @@ public class ServiceLayer {
 		return id;
 
 	}
+	
+	public List<GenerateTicket> showBooking(String userPhoneNumber) {
 
-	public List<GenerateTicket> showBooking(long userId) {
-
-		return ticketRepository.allTicket(userId);
+		return ticketRepository.allTicket(userPhoneNumber);
 	}
-
+	
 	public GenerateTicket ticketGeneration(Ticket ticket) {
 		long millis = System.currentTimeMillis();
 		Date date = new Date(millis);
