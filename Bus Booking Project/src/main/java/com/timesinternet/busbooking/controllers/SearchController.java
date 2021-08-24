@@ -36,7 +36,7 @@ public class SearchController {
   
 		Optional<City> cityOptional = serviceLayer.findByCityName(fromCityName);
 		Optional<City> cityOptional1 = serviceLayer.findByCityName(toCityName);
-		
+
 		if (!cityOptional.isPresent() && !cityOptional1.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 					"From And To city Not found in Our locations. Choose Any District from Haryana as locations!");

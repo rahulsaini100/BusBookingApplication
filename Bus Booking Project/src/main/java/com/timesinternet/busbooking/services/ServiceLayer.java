@@ -10,7 +10,6 @@ import com.timesinternet.busbooking.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import java.util.Date;
 
 import java.sql.Date;
 
@@ -76,6 +75,11 @@ public class ServiceLayer {
 		return 	cityRepository.findByCityName(fromCityName);
 		
 	
+	}
+
+	public Optional<Users> findUsersByUserPhoneNumber(String userPhoneNumber) {
+
+		return usersRepository.findUsersByUserPhoneNumber(userPhoneNumber);
 	}
 	
 }

@@ -16,12 +16,11 @@ import com.timesinternet.busbooking.services.ServiceLayer;
 
 @RestController
 public class SaveUserController {
-	private final UsersRepository usersRepository;
+	
 	private final ServiceLayer serviceLayer;
 
 	@Autowired
-	public SaveUserController(UsersRepository usersRepository, ServiceLayer serviceLayer) {
-		this.usersRepository = usersRepository;
+	public SaveUserController(ServiceLayer serviceLayer) {
 		this.serviceLayer = serviceLayer;
 	}
 
@@ -31,7 +30,7 @@ public class SaveUserController {
 
 		Users u = new Users(userName, userPhoneNumber, userAddress);
 
-		Optional<Users> usersOptional = usersRepository.findUsersByUserPhoneNumber(u.getUserPhoneNumber());
+		Optional<Users> usersOptional = serviceLayer.findUsersByUserPhoneNumber(u.getUserPhoneNumber());
 
 		boolean numberCheck = Pattern.matches("[0-9]+", u.getUserPhoneNumber());
 
