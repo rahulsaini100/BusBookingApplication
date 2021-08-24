@@ -1,4 +1,4 @@
-package com.timesinternet.busbooking.controllers;
+package com.timesinternet.busbooking.testcontrollers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -30,6 +30,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.timesinternet.busbooking.controllers.GenerateTicketController;
 import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.entities.Ticket;
 import com.timesinternet.busbooking.services.ServiceLayer;

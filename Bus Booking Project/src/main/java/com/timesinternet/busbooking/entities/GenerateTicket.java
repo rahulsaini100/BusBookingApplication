@@ -2,6 +2,9 @@ package com.timesinternet.busbooking.entities;
 
 import java.util.Date;
 
+//  This is a class which conatains details about the journey and user
+// It has attributes bookingId, userName, userPhoneNumber, userAddress, busId, startLocation, endLocation, 
+// dateOfBooking , journeydate, numberOfSeats and totalFare 
 public class GenerateTicket {
 	private long bookingId;
 	private String userName;
@@ -15,6 +18,8 @@ public class GenerateTicket {
 	private long numberOfSeats;
 	private long totalFare;
 
+	
+	//Constructors
 	public GenerateTicket() {
 		super();
 	}
@@ -36,6 +41,7 @@ public class GenerateTicket {
 		this.totalFare = totalFare;
 	}
 
+	//Getters and Setters 
 	public long getBookingId() {
 		return bookingId;
 	}
@@ -123,6 +129,6 @@ public class GenerateTicket {
 	public void setjourneyDate(Date journeyDate) {
 		this.journeyDate = journeyDate;
 	}
-//>>>>>>> branch 'main' of https://github.com/vikaxxxx/BusBookingApplication.git
+
 
 }

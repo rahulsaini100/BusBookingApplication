@@ -1,4 +1,4 @@
-package com.timesinternet.busbooking.controllers;
+package com.timesinternet.busbooking.testcontrollers;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mockitoSession;
@@ -24,6 +24,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.timesinternet.busbooking.controllers.SearchController;
 import com.timesinternet.busbooking.entities.City;
 import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.repositories.CityRepository;
