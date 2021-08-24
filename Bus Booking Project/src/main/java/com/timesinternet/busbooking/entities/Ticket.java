@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+// This is a POJO class which maps to ticket table of the database 
+// It has attributes bookingId (auto-generated primary key ), userId, busId, numberOfSeats, dateOfBooking, journeyDate and routeId
+
 @Entity
 @Table
 public class Ticket {
@@ -22,7 +25,9 @@ public class Ticket {
 	private Date dateOfBooking;
 	private Date journeyDate;
 	private String routeId;
-
+	
+	
+	// constructor without bookingId
 	public Ticket(long userId, String busId, String routeId, long numberOfSeats, Date journeyDate) {
 		super();
 		this.userId = userId;
@@ -31,7 +36,7 @@ public class Ticket {
 		this.journeyDate = journeyDate;
 		this.routeId = routeId;
 	}
-
+	// constructor with bookingId
 	public Ticket(long bookingId, long userId, String busId, long numberOfSeats, Date dateOfBooking, Date journeyDate,
 			String routeId) {
 		super();
@@ -47,7 +52,8 @@ public class Ticket {
 	public Ticket() {
 
 	}
-
+	
+	// Getters and Setters
 	public long getBookingId() {
 		return bookingId;
 	}

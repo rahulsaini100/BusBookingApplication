@@ -15,6 +15,7 @@ import java.sql.Date;
 
 import java.util.List;
 
+
 @Service
 public class ServiceLayer {
 
@@ -30,6 +31,7 @@ public class ServiceLayer {
 		this.ticketRepository = ticketRepository;
 
 	}
+	
 
 	public List<AvailableBus> availableBuses(String fromCityName, String toCityName, Date journeyDate,
 			long numberOfPassenger) {
@@ -37,28 +39,20 @@ public class ServiceLayer {
 		return busRepository.FindRoute(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
 	}
-	
-	// This method takes object of type Users and saves it in database. Also it return Id of the user 
+	 
 	public long addNewUser(Users u) {
 
 		usersRepository.save(u);
 		long id = u.getUserId();
 		return id;
+
 	}
 	
-	// This method takes userId as input and returns list of ticket booked by user 
-	// It uses allTicket method of ticketRepository
-	
-	public List<GenerateTicket> showBooking(long userId) {
+	public List<GenerateTicket> showBooking(String userPhoneNumber) {
 
-		return ticketRepository.allTicket(userId);
+		return ticketRepository.allTicket(userPhoneNumber);
 	}
 	
-	public List<GenerateTicket> showBooking2(String userPhoneNumber) {
-
-		return ticketRepository.allTicket2(userPhoneNumber);
-	}
-
 	public GenerateTicket ticketGeneration(Ticket ticket) {
 		long millis = System.currentTimeMillis();
 		Date date = new Date(millis);
@@ -67,5 +61,10 @@ public class ServiceLayer {
 		long bookingId = ticket.getBookingId();
 		return ticketRepository.FindTicket(bookingId);
 
+	}
+	
+	public long MaxAvailableSeats(String fromCityName, String toCityName, Date journeyDate) {
+
+		return busRepository.MaxSeats(fromCityName, toCityName, journeyDate);
 	}
 }

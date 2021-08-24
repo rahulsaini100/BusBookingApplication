@@ -2,12 +2,11 @@ package com.timesinternet.busbooking.entities;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+// This is a class which has all the details of the buses which falls under the user's requirement 
+// It has attributes busId, departureTime, arrivalTime, busType, busProvider, ticketPrice, totalSeats, availableSeat and routeId
 
-@Entity
 public class AvailableBus {
-	@Id
+
 	private String busId;
 	private Date departureTime;
 	private Date arrivalTime;
@@ -18,6 +17,7 @@ public class AvailableBus {
 	private long availableSeat;
 	private String routeId;
 
+	// Constructors
 	public AvailableBus() {
 		super();
 	}
@@ -36,6 +36,8 @@ public class AvailableBus {
 		this.routeId = routeId;
 	}
 
+	
+	// Getters and Setters 
 	public long getTotalSeats() {
 		return totalSeats;
 	}

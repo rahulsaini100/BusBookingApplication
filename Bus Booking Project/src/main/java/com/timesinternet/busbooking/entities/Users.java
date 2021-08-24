@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//POJO class for users which maps to users table in database
+// It contains userId(auto-generated primary key), userName , userPhoneNumber and userAddress
+
 @Entity
 @Table
 public class Users {
@@ -18,7 +21,8 @@ public class Users {
 	private String userName;
 	private String userPhoneNumber;
 	private String userAddress;
-
+	
+	// Constructors 
 	public Users() {
 
 	}
@@ -36,7 +40,8 @@ public class Users {
 		this.userPhoneNumber = userPhoneNumber;
 		this.userAddress = userAddress;
 	}
-
+	
+	// Getters and Setters 
 	public long getUserId() {
 		return userId;
 	}

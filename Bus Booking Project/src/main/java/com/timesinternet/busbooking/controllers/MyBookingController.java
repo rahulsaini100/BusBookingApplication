@@ -13,8 +13,16 @@ import org.springframework.web.server.ResponseStatusException;
 import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.entities.Ticket;
 import com.timesinternet.busbooking.repositories.TicketRepository;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
+//This is a controller class which contains url for the myBooking API
+// It takes userId as a input and returns List of ticket booked by that user
 @RestController
 public class MyBookingController {
 	private final ServiceLayer serviceLayer;
@@ -25,27 +33,12 @@ public class MyBookingController {
 		this.serviceLayer = serviceLayer;
 		this.ticketRepository = ticketRepository;
 	}
-	// This API takes userId as input and returns list of ticket booked by the user.
-	// It uses showBooking method of service layer and passes userId as input
+
 	
 	@PostMapping(value = "/mybooking")
-	public List<GenerateTicket> myBookingFn(@RequestParam long userId) {
+	public List<GenerateTicket> myBookingFn(@RequestParam String userPhoneNumber) {
 		
-//		Optional<Ticket> ticketOptional = ticketRepository.findTicketByUserId(userId);
-//		
-//		if(ticketOptional.isEmpty()) {
-//			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-//					"No booking for this userId. Enter a valid userId");
-//		}
-
-		return serviceLayer.showBooking(userId);
-
-	}
-	
-	@PostMapping(value = "/mybooking2")
-	public List<GenerateTicket> myBookingFn2(@RequestParam String userPhoneNumber) {
-		
-		return serviceLayer.showBooking2(userPhoneNumber);
+		return serviceLayer.showBooking(userPhoneNumber);
 
 	}
 }

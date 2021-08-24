@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//This is a POJO class which maps to seat table in database
+// It has attributes busId and total number of seats in that bus
+
 @Entity
 @Table
 public class Seat {
