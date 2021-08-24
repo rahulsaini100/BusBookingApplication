@@ -7,7 +7,7 @@ import javax.persistence.*;
 /**
  * City class represents city in our database.
  * It contains cityId and cityName as attributes
- * @author Vikas.Sahani
+ * @author Rahul.Saini
  *
  */
 

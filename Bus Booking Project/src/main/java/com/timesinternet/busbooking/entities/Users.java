@@ -7,8 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//POJO class for users which maps to users table in database
-// It contains userId(auto-generated primary key), userName , userPhoneNumber and userAddress
+/**
+ * User class represents user table in database
+ * It contains attributes userId, userName, userPhoneNumber, userAddress
+ * @author Vikas.Sahani
+ *
+ */
 
 @Entity
 @Table
@@ -22,17 +26,29 @@ public class Users {
 	private String userPhoneNumber;
 	private String userAddress;
 	
-	// Constructors 
+	/**
+	 * default constructor 
+	 */
 	public Users() {
 
 	}
-	
+	/**
+	 * constructs and initialize Users class without userId
+	 * @param userName
+	 * @param userPhoneNumber
+	 * @param userAddress
+	 */
 	public Users( String userName, String userPhoneNumber, String userAddress) {
 		this.userName = userName;
 		this.userPhoneNumber = userPhoneNumber;
 		this.userAddress = userAddress;
 	} 
-
+	/**
+	 * constructs and initialize Users class with userId
+	 * @param userName
+	 * @param userPhoneNumber
+	 * @param userAddress
+	 */
 	public Users(long userId, String userName, String userPhoneNumber, String userAddress) {
 		super();
 		this.userId = userId;
@@ -41,35 +57,59 @@ public class Users {
 		this.userAddress = userAddress;
 	}
 	
-	// Getters and Setters 
+	/**
+	 * 
+	 * @return userId
+	 */
 	public long getUserId() {
 		return userId;
 	}
-
+	/**
+	 * sets userId
+	 * @param userId
+	 */
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-
+	/**
+	 * 
+	 * @return userName
+	 */
 	public String getUserName() {
 		return userName;
 	}
-
+	/**
+	 * sets userName
+	 * @param userName
+	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
+	/**
+	 * 
+	 * @return userPhoneNumber
+	 */
 	public String getUserPhoneNumber() {
 		return userPhoneNumber;
 	}
-
+	/**
+	 * sets userPhoneNumber
+	 * @param userPhoneNumber
+	 */
 	public void setUserPhoneNumber(String userPhoneNumber) {
 		this.userPhoneNumber = userPhoneNumber;
 	}
-
+	/**
+	 * 
+	 * @return userAddress
+	 */
 	public String getUserAddress() {
 		return userAddress;
 	}
-
+	/**
+	 * sets userAddress
+	 * @param userAddress
+	 */
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}

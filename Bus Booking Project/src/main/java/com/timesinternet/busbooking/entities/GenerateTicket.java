@@ -2,9 +2,13 @@ package com.timesinternet.busbooking.entities;
 
 import java.util.Date;
 
-//  This is a class which conatains details about the journey and user
-// It has attributes bookingId, userName, userPhoneNumber, userAddress, busId, startLocation, endLocation, 
-// dateOfBooking , journeydate, numberOfSeats and totalFare 
+/**
+ * GenerateTicket class is used to have all the details in ticket
+ * It has attributes bookingId, userName, userPhoneNumber, userAddress, busId, startLocation, endLocation, dateOfBooking,
+ * journeyDate, numberOfSeats and totalFare
+ * @author Rahul.Saini
+ *
+ */
 public class GenerateTicket {
 	private long bookingId;
 	private String userName;
@@ -19,11 +23,26 @@ public class GenerateTicket {
 	private long totalFare;
 
 	
-	//Constructors
+	/**
+	 * default constructor 
+	 */
 	public GenerateTicket() {
 		super();
 	}
-
+	/**
+	 * constructs and initializes GenerateTicket class
+	 * @param bookingId
+	 * @param userName
+	 * @param userPhonenumber
+	 * @param userAddress
+	 * @param busId
+	 * @param startLocation
+	 * @param endLocation
+	 * @param dateOfBooking
+	 * @param journeyDate
+	 * @param numberOfSeats
+	 * @param totalFare
+	 */
 	public GenerateTicket(long bookingId, String userName, String userPhonenumber, String userAddress, String busId,
 			String startLocation, String endLocation, Date dateOfBooking, Date journeyDate, long numberOfSeats,
 			long totalFare) {
@@ -41,7 +60,10 @@ public class GenerateTicket {
 		this.totalFare = totalFare;
 	}
 
-	//Getters and Setters 
+	/**
+	 * 
+	 * @return bookingId
+	 */
 	public long getBookingId() {
 		return bookingId;
 	}
@@ -49,7 +71,10 @@ public class GenerateTicket {
 	public void setBookingId(long bookingId) {
 		this.bookingId = bookingId;
 	}
-
+	/**
+	 * 
+	 * @return userName
+	 */
 	public String getUserName() {
 		return userName;
 	}
@@ -57,7 +82,10 @@ public class GenerateTicket {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
+	/**
+	 * 
+	 * @return userPhoneNumber
+	 */
 	public String getUserPhonenumber() {
 		return userPhonenumber;
 	}
@@ -65,7 +93,10 @@ public class GenerateTicket {
 	public void setUserPhonenumber(String userPhonenumber) {
 		this.userPhonenumber = userPhonenumber;
 	}
-
+	/**
+	 * 
+	 * @return userAddress
+	 */
 	public String getUserAddress() {
 		return userAddress;
 	}
@@ -73,7 +104,10 @@ public class GenerateTicket {
 	public void setUserAddress(String userAddress) {
 		this.userAddress = userAddress;
 	}
-
+	/**
+	 * 
+	 * @return busId
+	 */
 	public String getBusId() {
 		return busId;
 	}
@@ -81,7 +115,10 @@ public class GenerateTicket {
 	public void setBusId(String busId) {
 		this.busId = busId;
 	}
-
+	/**
+	 * 
+	 * @return dateOfBooking
+	 */
 	public Date getDateOfBooking() {
 		return dateOfBooking;
 	}
@@ -89,7 +126,10 @@ public class GenerateTicket {
 	public void setDateOfBooking(Date dateOfBooking) {
 		this.dateOfBooking = dateOfBooking;
 	}
-
+	/**
+	 * 
+	 * @return numberOfSeats
+	 */
 	public long getnumberOfSeats() {
 		return numberOfSeats;
 	}
@@ -97,7 +137,10 @@ public class GenerateTicket {
 	public void setnumberOfSeats(long numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
 	}
-
+	/**
+	 * 
+	 * @return startLocation
+	 */
 	public String getStartLocation() {
 		return startLocation;
 	}
@@ -105,7 +148,11 @@ public class GenerateTicket {
 	public void setStartLocation(String startLocation) {
 		this.startLocation = startLocation;
 	}
-
+	
+	/**
+	 * 
+	 * @return endLocation
+	 */
 	public String getEndLocation() {
 		return endLocation;
 	}
@@ -113,7 +160,10 @@ public class GenerateTicket {
 	public void setEndLocation(String endLocation) {
 		this.endLocation = endLocation;
 	}
-
+	/**
+	 * 
+	 * @return totalFare
+	 */
 	public long getTotalFare() {
 		return totalFare;
 	}
@@ -121,7 +171,10 @@ public class GenerateTicket {
 	public void setTotalFare(long totalFare) {
 		this.totalFare = totalFare;
 	}
-
+	/**
+	 * 
+	 * @return journeyDate
+	 */
 	public Date getjourneyDate() {
 		return journeyDate;
 	}
@@ -129,6 +182,5 @@ public class GenerateTicket {
 	public void setjourneyDate(Date journeyDate) {
 		this.journeyDate = journeyDate;
 	}
-//>>>>>>> branch 'main' of https://github.com/vikaxxxx/BusBookingApplication.git
 
 }
