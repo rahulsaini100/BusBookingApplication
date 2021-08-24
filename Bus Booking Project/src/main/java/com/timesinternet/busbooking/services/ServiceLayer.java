@@ -24,10 +24,10 @@ import java.util.Optional;
 @Service
 public class ServiceLayer {
 
-	private final BusRepository busRepository;
-	private final UsersRepository usersRepository;
-	private final TicketRepository ticketRepository;
-	private final CityRepository cityRepository;
+	private BusRepository busRepository;
+	private UsersRepository usersRepository;
+	private TicketRepository ticketRepository;
+	private CityRepository cityRepository;
 	/**
 	 * constructs and initializes the ServiceLayer class
 	 * @param busRepository
