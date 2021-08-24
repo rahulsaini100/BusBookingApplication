@@ -46,7 +46,8 @@ public class MyBookingController {
 	 */
 	@PostMapping(value = "/mybooking")
 	public List<GenerateTicket> myBookingFn(@RequestParam String userPhoneNumber) {
-		
+
+		/* Uncomment line 51 to line 57 if requires validation on userPhoneNumber/error 400 */
 //		List<GenerateTicket> len = new ArrayList<GenerateTicket>();
 //		
 //		len = serviceLayer.showBooking(userPhoneNumber);
