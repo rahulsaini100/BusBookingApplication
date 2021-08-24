@@ -17,12 +17,12 @@ import java.sql.Date;
 public class SearchController {
 
 	private final ServiceLayer serviceLayer;
-	private final CityRepository cityRepository;
+
 
 	@Autowired
-	public SearchController(ServiceLayer serviceLayer, CityRepository cityRepository) {
+	public SearchController(ServiceLayer serviceLayer) {
 		this.serviceLayer = serviceLayer;
-		this.cityRepository = cityRepository;
+		
 	}
 	
 	//This takes inputs from user according to his/her needs 
@@ -41,27 +41,37 @@ public class SearchController {
 					"From city and To city can not be same. Choose Again");
 		}
 
-		Optional<City> cityOptional = cityRepository.findByCityName(fromCityName);
-		Optional<City> cityOptional1 = cityRepository.findByCityName(toCityName);
 		
 		// If there is no such cities in database than it returns error 400 along with message
+  
+		Optional<City> cityOptional = serviceLayer.findByCityName(fromCityName);
+		Optional<City> cityOptional1 = serviceLayer.findByCityName(toCityName);
+
 		if (!cityOptional.isPresent() && !cityOptional1.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-					"No bus Available from city to To city. Choose your citites again!");
+					"From And To city Not found in Our locations. Choose Any District from Haryana as locations!");
 
 		}
+
 		// If there is no such city in database as source city then it returns error 400 along with message
+
 		if (!cityOptional.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-					"No bus Start from this city. Choose your From city again!");
+					"From city Not found in our locations. Choose Any District from Haryana as From city!");
 
 		}
 
 		// If there is no such city in database as destination city then it returns error 400 along with message
 		if (!cityOptional1.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-					"No Bus goes to this Location. Choose your To city again!");
+					"To city Not found in our locations. Choose Any District from Haryana as To city!");
 
+		}
+		// to find maximum available seat in bus	
+		String MaxAvailableSeats = serviceLayer.MaxAvailableSeats(fromCityName, toCityName, journeyDate);
+		
+		if (MaxAvailableSeats == null) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Oh Sorry. No Bus available on this route!");
 		}
 
 		// If number of passengers is greater than 50 then it returns error 400 along with message
@@ -70,19 +80,22 @@ public class SearchController {
 					"Number of Passengers should not exceed 50. Enter Number of Passengers again!");
 
 		}
-		
-		// to find maximum available seat in bus
-		long MaxAvailableSeats = serviceLayer.MaxAvailableSeats(fromCityName, toCityName, journeyDate);
+
 		
 		// if total available seats are less than the users requirement then it returns error 400 along with message
-		if (MaxAvailableSeats < numberOfPassenger) {
+
+		int Maxseats=Integer.parseInt(MaxAvailableSeats);  
+        
+		if (Maxseats< numberOfPassenger) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 					"Maximum Available Seats for particular route are " + MaxAvailableSeats
 							+ ".Enter Number of Passengers less than or Equal to " + MaxAvailableSeats
 							+ " and try Again!");
 		}
+
 		
 		// calls availableBuses method of service layer
+
 		return serviceLayer.availableBuses(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
 	}
