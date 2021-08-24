@@ -2,9 +2,11 @@ package com.timesinternet.busbooking.entities;
 
 import java.util.Date;
 
-// This is a class which has all the details of the buses which falls under the user's requirement 
-// It has attributes busId, departureTime, arrivalTime, busType, busProvider, ticketPrice, totalSeats, availableSeat and routeId
-
+/**
+ * AvailableBus class represents the class whose object will be pass when user will search for buses of his/her requirement
+ * @author Rahul.Saini
+ *
+ */
 public class AvailableBus {
 
 	private String busId;
@@ -17,11 +19,24 @@ public class AvailableBus {
 	private long availableSeat;
 	private String routeId;
 
-	// Constructors
+	/**
+	 * default constructor
+	 */
 	public AvailableBus() {
 		super();
 	}
-
+	/**
+	 * constructs and initializes AvailableBus class
+	 * @param busId
+	 * @param arrivalTime
+	 * @param departureTime
+	 * @param busType
+	 * @param busProvider
+	 * @param ticketPrice
+	 * @param totalSeats
+	 * @param availableSeat
+	 * @param routeId
+	 */
 	public AvailableBus(String busId, Date arrivalTime, Date departureTime, String busType, String busProvider,
 			long ticketPrice, long totalSeats, long availableSeat, String routeId) {
 		super();
@@ -37,7 +52,10 @@ public class AvailableBus {
 	}
 
 	
-	// Getters and Setters 
+	/**
+	 *  
+	 * @return totalSeats
+	 */
 	public long getTotalSeats() {
 		return totalSeats;
 	}
@@ -45,7 +63,10 @@ public class AvailableBus {
 	public void setTotalSeats(long totalSeats) {
 		this.totalSeats = totalSeats;
 	}
-
+	/**
+	 *  
+	 * @return busId
+	 */
 	public String getBusId() {
 		return busId;
 	}
@@ -53,7 +74,10 @@ public class AvailableBus {
 	public void setBusId(String busId) {
 		this.busId = busId;
 	}
-
+	/**
+	 *  
+	 * @return arrivalTime
+	 */
 	public Date getArrivalTime() {
 		return arrivalTime;
 	}
@@ -61,7 +85,10 @@ public class AvailableBus {
 	public void setArrivalTime(Date arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
-
+	/**
+	 *  
+	 * @return departureTime
+	 */
 	public Date getDepartureTime() {
 		return departureTime;
 	}
@@ -69,7 +96,10 @@ public class AvailableBus {
 	public void setDepartureTime(Date depastureTime) {
 		this.departureTime = depastureTime;
 	}
-
+	/**
+	 *  
+	 * @return busType
+	 */
 	public String getbusType() {
 		return busType;
 	}
@@ -77,7 +107,10 @@ public class AvailableBus {
 	public void setbusType(String busType) {
 		this.busType = busType;
 	}
-
+	/**
+	 *  
+	 * @return busProvider
+	 */
 	public String getbusProvider() {
 		return busProvider;
 	}
@@ -85,7 +118,10 @@ public class AvailableBus {
 	public void setbusProvider(String busProvider) {
 		this.busProvider = busProvider;
 	}
-
+	/**
+	 *  
+	 * @return ticketPrice
+	 */
 	public long getTicketPrice() {
 		return ticketPrice;
 	}
@@ -93,7 +129,10 @@ public class AvailableBus {
 	public void setTicketPrice(long ticketPrice) {
 		this.ticketPrice = ticketPrice;
 	}
-
+	/**
+	 *  
+	 * @return availableSeat
+	 */
 	public long getAvailableSeat() {
 		return availableSeat;
 	}
@@ -101,7 +140,10 @@ public class AvailableBus {
 	public void setAvailableSeat(long availableSeat) {
 		this.availableSeat = availableSeat;
 	}
-
+	/**
+	 *  
+	 * @return routeId
+	 */
 	public String getRouteId() {
 		return routeId;
 	}

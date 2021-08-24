@@ -6,7 +6,7 @@ import java.sql.Time;
 /**
  * Route class represents route table in database
  * It has attributes routeId, fromCityId, toCityId, departureTime, arrivalTime
- * @author Vikas.Sahani
+ * @author Rahul.Saini
  *
  */
 
@@ -92,15 +92,24 @@ public class Route {
 	public Time getDepartureTime() {
 		return departureTime;
 	}
-
+	/**
+	 * sets departureTime
+	 * @param departureTime
+	 */
 	public void setDepartureTime(Time departureTime) {
 		this.departureTime = departureTime;
 	}
-
+	/**
+	 * 
+	 * @return arrivalTime
+	 */
 	public Time getArrivalTime() {
 		return arrivalTime;
 	}
-
+	/**
+	 * sets arrivalTime
+	 * @param arrivalTime
+	 */
 	public void setArrivalTime(Time arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
