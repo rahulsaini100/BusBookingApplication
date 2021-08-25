@@ -19,7 +19,7 @@ class BusRepositoryTest {
 	private BusRepository undertest;
 
 	@Test
-	void FindRoute_Test() {
+	void FindRouteMethod_Test() {
 
 		String fromCityName = "Ambala";
 		String toCityName = "Yamuna Nagar";
@@ -33,7 +33,7 @@ class BusRepositoryTest {
 	}
 
 	@Test
-	void FindMaxSeats_Test() {
+	void FindMaxSeatsMethod_Test() {
 
 		String fromCityName = "Ambala";
 		String toCityName = "Yamuna Nagar";
