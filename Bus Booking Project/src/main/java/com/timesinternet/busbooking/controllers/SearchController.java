@@ -17,6 +17,7 @@ import java.sql.Date;
  * @author Rahul.Saini
  *
  */
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class SearchController {
 
