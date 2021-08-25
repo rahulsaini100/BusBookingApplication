@@ -40,8 +40,8 @@ public class GenerateTicketController {
 	 */
 	@PostMapping(value = "/generateticket")
 	public GenerateTicket generateTicket(@RequestParam long userId, @RequestParam String busId,
-			@RequestParam String routeId, @RequestParam long numberOfSeats, @RequestParam Date journeyDate) {
-		Ticket ticket = new Ticket(userId, busId, routeId, numberOfSeats, journeyDate);
+			@RequestParam String routeId, @RequestParam long numberOfSeats, @RequestParam Date journeyDate, @RequestParam Long totalFare) {
+		Ticket ticket = new Ticket(userId, busId, routeId, numberOfSeats, journeyDate,totalFare);
 		return serviceLayer.ticketGeneration(ticket);
 	}
 

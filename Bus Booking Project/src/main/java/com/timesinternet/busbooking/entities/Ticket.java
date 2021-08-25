@@ -30,6 +30,7 @@ public class Ticket {
 	private Date dateOfBooking;
 	private Date journeyDate;
 	private String routeId;
+	private long totalFare;
 
 	/**
 	 * constructor without bookingId
@@ -40,13 +41,14 @@ public class Ticket {
 	 * @param numberOfSeats
 	 * @param journeyDate
 	 */
-	public Ticket(long userId, String busId, String routeId, long numberOfSeats, Date journeyDate) {
+	public Ticket(long userId, String busId, String routeId, long numberOfSeats, Date journeyDate, long totalFare) {
 		super();
 		this.userId = userId;
 		this.busId = busId;
 		this.numberOfSeats = numberOfSeats;
 		this.journeyDate = journeyDate;
 		this.routeId = routeId;
+		this.totalFare=totalFare;
 	}
 
 	/**
@@ -196,6 +198,13 @@ public class Ticket {
 	 */
 	public void setjourneyDate(Date journeyDate) {
 		this.journeyDate = journeyDate;
+	}
+
+	public long getTotalfare() {
+		return totalFare;
+	}
+	public void setTotalfare(long totalfare) {
+		this.totalFare = totalfare;
 	}
 
 }

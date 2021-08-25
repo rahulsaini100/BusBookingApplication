@@ -38,9 +38,9 @@ class UsersRepositoryTest {
 	 */
 	@Test
 	void IfUserNotPresentfindByUserPhoneNumber_Test() {
+		Optional<Users> userOptional= undertest.findUsersByUserPhoneNumber("8814056130");
+		assertEquals(false,userOptional.isPresent());
 
-		Optional<Users> userOptional = undertest.findUsersByUserPhoneNumber("8814056128");
-		assertEquals(false, userOptional.isPresent());
 	}
 
 }

@@ -82,7 +82,6 @@ class SearchControllerTest {
 	 */
 	@Test
 	void ToCityNotPresentInDatabase_BadRequest_Test() throws Exception {
-
 		City c = new City();
 		c.setCityName("Ambala");
 		Optional<City> obj = Optional.of(c);

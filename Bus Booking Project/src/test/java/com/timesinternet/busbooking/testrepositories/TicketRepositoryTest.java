@@ -30,7 +30,7 @@ class TicketRepositoryTest {
 	@Test
 	void FindTicketByBookingid_Test() {
 
-		GenerateTicket Expected = new GenerateTicket(3, "krishna", "8814056456", "Delhi,NCR", "B21", "Ambala",
+		GenerateTicket Expected = new GenerateTicket(3,3, "krishna", "8814056456", "Delhi,NCR", "B21", "Ambala",
 				"Yamuna Nagar", Date.valueOf("2021-08-20"), Date.valueOf("2021-08-21"), 10, 3500);
 		GenerateTicket Actual = undertest.FindTicket(3);
 		assertEquals(Expected.getBookingId(), Actual.getBookingId());

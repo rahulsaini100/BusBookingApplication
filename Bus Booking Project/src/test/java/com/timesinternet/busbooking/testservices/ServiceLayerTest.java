@@ -58,23 +58,6 @@ class ServiceLayerTest {
 	 */
 	@MockBean
 	CityRepository cityRepository;
-
-	/**
-	 * Test for AvailableBus method
-	 */
-	@Test
-	void AvailableBusesMethod_Test() {
-
-		Mockito.when(busRepository.FindRoute("Ambala", "Yamuna Nagar", Date.valueOf("2021-08-30"), 10))
-				.thenReturn(null);
-
-		List<AvailableBus> expected = serviceLayer.availableBuses("Ambala", "Yamuna Nagar", Date.valueOf("2021-08-30"),
-				10);
-
-		assertEquals(3, expected.size());
-
-	}
-
 	/**
 	 * Test for addNewUser
 	 */
@@ -99,9 +82,9 @@ class ServiceLayerTest {
 	void ShowBookingsMethod_Test() {
 
 		List<GenerateTicket> Mybookings = new ArrayList<GenerateTicket>();
-		GenerateTicket booking1 = new GenerateTicket(7, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
+		GenerateTicket booking1 = new GenerateTicket(7,12, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
 				"Yamuna Nagar", Date.valueOf("2021-08-25"), Date.valueOf("2021-08-30"), 5, 2000);
-		GenerateTicket booking2 = new GenerateTicket(8, "Robin", "8814056123", "Haryana, Kuk", "B15", "Panchkula",
+		GenerateTicket booking2 = new GenerateTicket(8,12, "Robin", "8814056123", "Haryana, Kuk", "B15", "Panchkula",
 				"Yamuna Nagar", Date.valueOf("2021-08-26"), Date.valueOf("2021-08-30"), 5, 2000);
 
 		Mybookings.add(booking1);
@@ -121,9 +104,9 @@ class ServiceLayerTest {
 	@Test
 	void TicketGenerateMethod_Test() {
 
-		Ticket ticket = new Ticket(5, "B14", "R13", 5, Date.valueOf("2021-08-30"));
+		Ticket ticket = new Ticket(5, "B14", "R13", 5, Date.valueOf("2021-08-30"),2000);
 		ticket.setBookingId(7L);
-		GenerateTicket Expected = new GenerateTicket(7, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
+		GenerateTicket Expected= new GenerateTicket(7,12, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
 				"Yamuna Nagar", Date.valueOf("2021-08-25"), Date.valueOf("2021-08-30"), 5, 2000);
 		Mockito.when(ticketRepository.save(ticket)).thenReturn(ticket);
 		Mockito.when(ticketRepository.FindTicket(ticket.getBookingId())).thenReturn(Expected);
