@@ -3,16 +3,17 @@ package com.timesinternet.busbooking.testservices;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.naming.java.javaURLContextFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -32,7 +33,12 @@ import com.timesinternet.busbooking.services.ServiceLayer;
  * @author Rahul.Saini
  *
  */
+@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 class ServiceLayerTest {
+
+	@InjectMocks
+	ServiceLayer serviceLayer;
 	/**
 	 * Mocking the busRepository
 	 */
@@ -54,8 +60,6 @@ class ServiceLayerTest {
 	@MockBean
 	CityRepository cityRepository;
 
-	@InjectMocks
-	private ServiceLayer serviceLayer;
 	/**
 	 * Test for AvailableBus method
 	 */
@@ -152,11 +156,8 @@ class ServiceLayerTest {
 		Users testobj=new  Users();
 		testobj.setUserAddress("8814056123");
 		Optional<Users> expected=Optional.of(testobj);
-
-		Mockito.when(usersRepository.findUsersByUserPhoneNumber("8814056123")).thenReturn(null);
-
+		Mockito.when(usersRepository.findUsersByUserPhoneNumber("8814056123")).thenReturn(expected);
 		Optional<Users> actual = serviceLayer.findUsersByUserPhoneNumber("8814056123");
-
 		assertEquals(expected.get(),actual.get());
 
 	}

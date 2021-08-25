@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import com.timesinternet.busbooking.entities.GenerateTicket;
-import com.timesinternet.busbooking.repositories.TicketRepository;
+
 import com.timesinternet.busbooking.services.ServiceLayer;
 
 /**
