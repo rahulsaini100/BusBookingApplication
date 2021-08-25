@@ -4,15 +4,10 @@ import com.timesinternet.busbooking.entities.*;
 import com.timesinternet.busbooking.repositories.BusRepository;
 import com.timesinternet.busbooking.repositories.CityRepository;
 import com.timesinternet.busbooking.repositories.TicketRepository;
-
 import com.timesinternet.busbooking.repositories.UsersRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
 import java.sql.Date;
-
 import java.util.List;
 import java.util.Optional;
 

@@ -1,13 +1,11 @@
 package com.timesinternet.busbooking.controllers;
 
 import java.sql.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.entities.Ticket;
 import com.timesinternet.busbooking.services.ServiceLayer;
@@ -41,8 +39,8 @@ public class GenerateTicketController {
 	 */
 	@PostMapping(value = "/generateticket")
 	public GenerateTicket generateTicket(@RequestParam long userId, @RequestParam String busId,
-			@RequestParam String routeId, @RequestParam long numberOfSeats, @RequestParam Date journeyDate) {
-		Ticket ticket = new Ticket(userId, busId, routeId, numberOfSeats, journeyDate);
+			@RequestParam String routeId, @RequestParam long numberOfSeats, @RequestParam Date journeyDate, @RequestParam Long totalFare) {
+		Ticket ticket = new Ticket(userId, busId, routeId, numberOfSeats, journeyDate,totalFare);
 		return serviceLayer.ticketGeneration(ticket);
 	}
 

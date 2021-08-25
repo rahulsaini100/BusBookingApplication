@@ -44,29 +44,10 @@ public class GenerateTicket {
 	 * @param numberOfSeats
 	 * @param totalFare
 	 */
-	public GenerateTicket(long bookingId, String userName, String userPhonenumber, String userAddress, String busId,
-			String startLocation, String endLocation, Date dateOfBooking, Date journeyDate, long numberOfSeats,
-			long totalFare) {
-		super();
-		this.bookingId = bookingId;
-		this.userName = userName;
-		this.userPhonenumber = userPhonenumber;
-		this.userAddress = userAddress;
-		this.busId = busId;
-		this.startLocation = startLocation;
-		this.endLocation = endLocation;
-		this.dateOfBooking = dateOfBooking;
-		this.journeyDate = journeyDate;
-		this.numberOfSeats = numberOfSeats;
-		this.totalFare = totalFare;
-	}
 	
-	
-
-	public GenerateTicket(long userId, long bookingId, String userName, String userPhonenumber, String userAddress,
+	public GenerateTicket( long bookingId,long userId, String userName, String userPhonenumber, String userAddress,
 			String busId, String startLocation, String endLocation, Date dateOfBooking, Date journeyDate,
 			long numberOfSeats, long totalFare) {
-		super();
 		this.userId = userId;
 		this.bookingId = bookingId;
 		this.userName = userName;
