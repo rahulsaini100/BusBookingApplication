@@ -11,6 +11,7 @@ import java.sql.Date;
 
 /**
  * This controller contains url for search API
+ * 
  * @author Rahul.Saini
  *
  */
@@ -19,19 +20,22 @@ import java.sql.Date;
 public class SearchController {
 
 	private final ServiceLayer serviceLayer;
+
 	/**
 	 * constructor
+	 * 
 	 * @param serviceLayer
 	 */
 	@Autowired
 	public SearchController(ServiceLayer serviceLayer) {
 		this.serviceLayer = serviceLayer;
-		
+
 	}
-	
+
 	/**
-	 * This is an endpoint which takes inputs , checks validation and if all the validations passes
-	 * it returns list of AvailableBus 
+	 * This is an endpoint which takes inputs , checks validation and if all the
+	 * validations passes it returns list of AvailableBus
+	 * 
 	 * @param fromCityName
 	 * @param toCityName
 	 * @param journeyDate
@@ -59,7 +63,7 @@ public class SearchController {
 		 * checks if toCityName is present in database or not
 		 */
 		Optional<City> cityOptional1 = serviceLayer.findByCityName(toCityName);
-		
+
 		/**
 		 * returns error 400
 		 */
@@ -86,10 +90,10 @@ public class SearchController {
 
 		}
 		/**
-		 * finds maximum available seats 
+		 * finds maximum available seats
 		 */
 		String MaxAvailableSeats = serviceLayer.MaxAvailableSeats(fromCityName, toCityName, journeyDate);
-		
+
 		/**
 		 * returns error 400
 		 */
@@ -105,12 +109,12 @@ public class SearchController {
 
 		}
 
-		int Maxseats=Integer.parseInt(MaxAvailableSeats);  
-        
+		int Maxseats = Integer.parseInt(MaxAvailableSeats);
+
 		/**
 		 * returns error 400
 		 */
-		if (Maxseats< numberOfPassenger) {
+		if (Maxseats < numberOfPassenger) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
 					"Maximum Available Seats for particular route are " + MaxAvailableSeats
 							+ ".Enter Number of Passengers less than or Equal to " + MaxAvailableSeats

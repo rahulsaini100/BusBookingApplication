@@ -1,49 +1,51 @@
 package com.timesinternet.busbooking.testcontrollers;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mockitoSession;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import java.sql.Date;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.util.Optionals;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.*;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
-
 import com.timesinternet.busbooking.controllers.SearchController;
 import com.timesinternet.busbooking.entities.City;
-import com.timesinternet.busbooking.entities.GenerateTicket;
-import com.timesinternet.busbooking.repositories.CityRepository;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
+/**
+ * Codes for testing of SearchController class
+ * 
+ * @author Rahul.Saini
+ *
+ */
 @WebMvcTest(value = SearchController.class)
 @WebAppConfiguration
 class SearchControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
+	/**
+	 * Mocking the ServiceLayer
+	 */
 	@MockBean
 	private ServiceLayer undertest;
 
+	/**
+	 * Testing weather fromCityName and toCityName are same
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	void FromAndToCitySame_BadRequest_Test() throws Exception {
 
-		MvcResult mvcResult = mockMvc.perform(post("/search?fromCityName=Ambala&toCityName=Ambala&journeyDate=2021-08-30&numberOfPassenger=5"))
+		MvcResult mvcResult = mockMvc
+				.perform(post(
+						"/search?fromCityName=Ambala&toCityName=Ambala&journeyDate=2021-08-30&numberOfPassenger=5"))
 				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(400, status);
@@ -52,6 +54,11 @@ class SearchControllerTest {
 
 	}
 
+	/**
+	 * Testing weather fromCity present in databaase or not
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	void FromCityNotPresentInDatabase_BadRequest_Test() throws Exception {
 		City c = new City();
@@ -68,6 +75,11 @@ class SearchControllerTest {
 
 	}
 
+	/**
+	 * Testing weather toCityName is present on database or not
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	void ToCityNotPresentInDatabase_BadRequest_Test() throws Exception {
 		City c = new City();
@@ -85,6 +97,11 @@ class SearchControllerTest {
 
 	}
 
+	/**
+	 * Testing weather fromCityName and toCityName is present in database or not
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	void FromCityAndToCityNotPresentInDatabase_BadRequest_Test() throws Exception {
 
@@ -99,6 +116,11 @@ class SearchControllerTest {
 				message);
 	}
 
+	/**
+	 * Testing the availability of bus
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	void NoBusAvailable_BadRequest_Test() throws Exception {
 

@@ -10,8 +10,9 @@ import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
 /**
- * This is a controller class which contains url for the myBooking API
- * It takes userId as a input and returns List of ticket booked by that user
+ * This is a controller class which contains url for the myBooking API It takes
+ * userId as a input and returns List of ticket booked by that user
+ * 
  * @author Vikas.Sahani
  *
  */
@@ -20,7 +21,9 @@ import com.timesinternet.busbooking.services.ServiceLayer;
 public class MyBookingController {
 	private final ServiceLayer serviceLayer;
 
-	 /** constructor of MyBookingController class
+	/**
+	 * constructor of MyBookingController class
+	 * 
 	 * @param serviceLayer
 	 * @param ticketRepository
 	 */
@@ -31,13 +34,16 @@ public class MyBookingController {
 		this.serviceLayer = serviceLayer;
 
 	}
+
 	/**
-	 * this endpoint takes input userPhoneNumber and returns list of Tickets booked over that input
-	 * if no booking is there for that number than it wi return error 400
+	 * this endpoint takes input userPhoneNumber and returns list of Tickets booked
+	 * over that input if no booking is there for that number than it wi return
+	 * error 400
+	 * 
 	 * @param userPhoneNumber
 	 * @return
 	 */
-		
+
 	@PostMapping(value = "/mybooking")
 	public List<GenerateTicket> myBooking(@RequestParam String userPhoneNumber) {
 

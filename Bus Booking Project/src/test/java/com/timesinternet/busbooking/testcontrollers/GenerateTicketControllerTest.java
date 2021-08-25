@@ -18,20 +18,33 @@ import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.entities.Ticket;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
+/**
+ * Codes for testing of GenerateTicketController class
+ * 
+ * @author Rahul.Saini
+ *
+ */
 @WebMvcTest(value = GenerateTicketController.class)
 @WebAppConfiguration
 class GenerateTicketControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
+	/**
+	 * Mocking the ServiceLayer
+	 */
 	@MockBean
 	private ServiceLayer undertest;
 
+	/**
+	 * Test for the GenerateTicket method
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	void GenerateTicketMethod_Test() throws Exception {
 
-		GenerateTicket testobj = new GenerateTicket(7,12, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
+		GenerateTicket testobj = new GenerateTicket(12,7, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
 				"Yamuna Nagar", Date.valueOf("2021-08-25"), Date.valueOf("2021-08-30"), 5, 2000);
 
 		Mockito.when(undertest.ticketGeneration((Ticket) any(Ticket.class))).thenReturn(testobj);

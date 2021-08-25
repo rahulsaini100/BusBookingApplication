@@ -4,8 +4,9 @@ import javax.persistence.*;
 import java.sql.Time;
 
 /**
- * Route class represents route table in database
- * It has attributes routeId, fromCityId, toCityId, departureTime, arrivalTime
+ * Route class represents route table in database It has attributes routeId,
+ * fromCityId, toCityId, departureTime, arrivalTime
+ * 
  * @author Rahul.Saini
  *
  */
@@ -26,8 +27,10 @@ public class Route {
 	 */
 	public Route() {
 	}
+
 	/**
-	 * Constructs and initializes Route class 
+	 * Constructs and initializes Route class
+	 * 
 	 * @param routeId
 	 * @param fromCityId
 	 * @param toCityId
@@ -41,22 +44,24 @@ public class Route {
 		this.departureTime = departureTime;
 		this.arrivalTime = arrivalTime;
 	}
-	
-	
+
 	/**
-	 *  
+	 * 
 	 * @return routeId
 	 */
 	public String getRouteId() {
 		return routeId;
 	}
+
 	/**
 	 * sets routeId
+	 * 
 	 * @param routeId
 	 */
 	public void setRouteId(String routeId) {
 		this.routeId = routeId;
 	}
+
 	/**
 	 * 
 	 * @return fromCityId
@@ -64,13 +69,16 @@ public class Route {
 	public String getFromCityId() {
 		return fromCityId;
 	}
+
 	/**
 	 * sets fromCityId
+	 * 
 	 * @param fromCityId
 	 */
 	public void setFromCityId(String fromCityId) {
 		this.fromCityId = fromCityId;
 	}
+
 	/**
 	 * 
 	 * @return toCityId
@@ -78,13 +86,16 @@ public class Route {
 	public String getToCityId() {
 		return toCityId;
 	}
+
 	/**
 	 * sets toCityId
+	 * 
 	 * @param toCityId
 	 */
 	public void setToCityId(String toCityId) {
 		this.toCityId = toCityId;
 	}
+
 	/**
 	 * 
 	 * @return departureTime
@@ -92,13 +103,16 @@ public class Route {
 	public Time getDepartureTime() {
 		return departureTime;
 	}
+
 	/**
 	 * sets departureTime
+	 * 
 	 * @param departureTime
 	 */
 	public void setDepartureTime(Time departureTime) {
 		this.departureTime = departureTime;
 	}
+
 	/**
 	 * 
 	 * @return arrivalTime
@@ -106,8 +120,10 @@ public class Route {
 	public Time getArrivalTime() {
 		return arrivalTime;
 	}
+
 	/**
 	 * sets arrivalTime
+	 * 
 	 * @param arrivalTime
 	 */
 	public void setArrivalTime(Time arrivalTime) {

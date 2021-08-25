@@ -26,23 +26,36 @@ import com.timesinternet.busbooking.entities.GenerateTicket;
 
 import com.timesinternet.busbooking.services.ServiceLayer;
 
+/**
+ * Codes for testing of MyBookingController class
+ * 
+ * @author Rahul.Saini
+ *
+ */
 @WebMvcTest(value = MyBookingController.class)
 @WebAppConfiguration
 class MyBookingControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
+	/**
+	 * Mocking the ServiceLayer
+	 */
 	@MockBean
 	private ServiceLayer undertest;
 
+	/**
+	 * Testing the ShowMyBooking class
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	void ShowMybookingMethod_Test() throws Exception {
 
 		List<GenerateTicket> Mybookings = new ArrayList<GenerateTicket>();
-		GenerateTicket booking1 = new GenerateTicket(7,12, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
+		GenerateTicket booking1 = new GenerateTicket(12,7, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
 				"Yamuna Nagar", Date.valueOf("2021-08-25"), Date.valueOf("2021-08-30"), 5, 2000);
-		GenerateTicket booking2 = new GenerateTicket(8,12, "Robin", "8814056123", "Haryana, Kuk", "B15", "Panchkula",
+		GenerateTicket booking2 = new GenerateTicket(12,8, "Robin", "8814056123", "Haryana, Kuk", "B15", "Panchkula",
 				"Yamuna Nagar", Date.valueOf("2021-08-26"), Date.valueOf("2021-08-30"), 5, 2000);
 
 		Mybookings.add(booking1);
@@ -75,7 +88,7 @@ class MyBookingControllerTest {
 		JSONArray jsonArray = new JSONArray(mvcResult.getResponse().getContentAsString());
 
 		assertEquals(2, jsonArray.length());
-	
+
 	}
 
 }

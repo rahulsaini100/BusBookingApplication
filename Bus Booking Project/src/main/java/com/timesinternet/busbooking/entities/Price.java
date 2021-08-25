@@ -6,8 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Price class represents price table in our database
- * It has attributes routeId and ticketPrice
+ * Price class represents price table in our database It has attributes routeId
+ * and ticketPrice
+ * 
  * @author Vikas.Sahani
  *
  */
@@ -19,15 +20,17 @@ public class Price {
 	@Column(length = 5)
 	private String routeId;
 	private Long ticketPrice;
-	
+
 	/**
-	 * Default constructor 
+	 * Default constructor
 	 */
 	public Price() {
 
 	}
+
 	/**
 	 * Constructs and initializes the Price class
+	 * 
 	 * @param routeId
 	 * @param ticketPrice
 	 */
@@ -36,7 +39,7 @@ public class Price {
 		this.routeId = routeId;
 		this.ticketPrice = ticketPrice;
 	}
-	
+
 	/**
 	 * 
 	 * @return routeId
@@ -44,13 +47,16 @@ public class Price {
 	public String getRouteId() {
 		return routeId;
 	}
+
 	/**
 	 * sets routeId
+	 * 
 	 * @param routeId
 	 */
 	public void setRouteId(String routeId) {
 		this.routeId = routeId;
 	}
+
 	/**
 	 * 
 	 * @return ticketPrice
@@ -58,8 +64,10 @@ public class Price {
 	public Long getTicketPrice() {
 		return ticketPrice;
 	}
+
 	/**
 	 * set ticketPrice
+	 * 
 	 * @param ticketPrice
 	 */
 	public void setTicketPrice(Long ticketPrice) {
