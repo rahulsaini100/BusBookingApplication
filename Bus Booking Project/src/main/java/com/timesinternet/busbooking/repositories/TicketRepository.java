@@ -20,7 +20,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 	 * @param bookingId
 	 * @return
 	 */
-	@Query("select new com.timesinternet.busbooking.entities.GenerateTicket(t.bookingId,u.userName,"
+	@Query("select new com.timesinternet.busbooking.entities.GenerateTicket(u.userId,t.bookingId,u.userName,"
 			+ " u.userPhoneNumber,u.userAddress,t.busId,(select cityName from City where cityId=r.fromCityId),"
 			+ "(select cityName from City where cityId=r.toCityId),t.dateOfBooking,t.journeyDate,t.numberOfSeats,"
 			+ "p.ticketPrice*t.numberOfSeats)" + " from Ticket as t INNER join Users as u on t.userId=u.userId "
@@ -33,7 +33,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 	 * @param userPhoneNumber
 	 * @return
 	 */
-	@Query("select new com.timesinternet.busbooking.entities.GenerateTicket(t.bookingId,u.userId,u.userName,"
+	@Query("select new com.timesinternet.busbooking.entities.GenerateTicket(u.userId,t.bookingId,u.userName,"
 			+ " u.userPhoneNumber,u.userAddress,t.busId,(select cityName from City where cityId=r.fromCityId),"
 			+ "(select cityName from City where cityId=r.toCityId),t.dateOfBooking,t.journeyDate,t.numberOfSeats,"
 			+ "p.ticketPrice*t.numberOfSeats)" + " from Ticket as t INNER join Users as u on t.userId=u.userId "

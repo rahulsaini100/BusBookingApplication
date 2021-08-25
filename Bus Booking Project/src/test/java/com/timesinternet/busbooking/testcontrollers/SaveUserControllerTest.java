@@ -21,16 +21,26 @@ import com.timesinternet.busbooking.controllers.SaveUserController;
 import com.timesinternet.busbooking.entities.Users;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
+/**
+ * Codes for testing of SaveUserController class
+ * @author Rahul.Saini
+ *
+ */
 @WebMvcTest(value = SaveUserController.class)
 @WebAppConfiguration
 class SaveUserControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
+	/**
+	 * Mocking the ServiceLayer
+	 */
 	@MockBean
 	private ServiceLayer undertest;
-	
+	/**
+	 * Testing for already registered number
+	 * @throws Exception
+	 */
 	@Test
 	void NumberAlreadyregistered_BadRequest_Test() throws Exception{
 		
@@ -45,7 +55,10 @@ class SaveUserControllerTest {
 		assertEquals("Number already Registered. Use a different number", message);
 		
 	}
-	
+	/**
+	 * Testing for valid userName
+	 * @throws Exception
+	 */
 	@Test
 	void ifusernameNotContainsAlphabatOrSpacesOnly_BadRequest_Test() throws Exception{
 		
@@ -56,6 +69,10 @@ class SaveUserControllerTest {
 		assertEquals("User Name should contain letters a-z , A-Z and spaces only", message);
 		
 	}
+	/**
+	 * Testing for valid userPhoneNumber
+	 * @throws Exception
+	 */
 	@Test
 	void ifuserNumberNotContainDigitsOnly_BadRequest_Test() throws Exception{
 		
@@ -66,6 +83,10 @@ class SaveUserControllerTest {
 		assertEquals("Phone number should contain digits 0-9 only", message);
 		
 	}
+	/**
+	 * Testing the size of userPhoneNumber
+	 * @throws Exception
+	 */
 	@Test
 	void ifuserNumberGreaterThan10Digits_BadRequest_Test() throws Exception{
 		
@@ -76,7 +97,10 @@ class SaveUserControllerTest {
 		assertEquals("Phone number should be of 10 digits", message);
 		
 	}
-	
+	/**
+	 * Testing the method which adds user and returns userId
+	 * @throws Exception
+	 */
 	@Test
 	void AddnewUserAndReturnUserIdTest() throws Exception{
 		

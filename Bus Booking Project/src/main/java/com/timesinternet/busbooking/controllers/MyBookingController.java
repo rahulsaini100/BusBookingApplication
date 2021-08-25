@@ -22,7 +22,7 @@ import com.timesinternet.busbooking.services.ServiceLayer;
 public class MyBookingController {
 	private final ServiceLayer serviceLayer;
 
-	 * constructor of MyBookingController class
+	 /** constructor of MyBookingController class
 	 * @param serviceLayer
 	 * @param ticketRepository
 	 */

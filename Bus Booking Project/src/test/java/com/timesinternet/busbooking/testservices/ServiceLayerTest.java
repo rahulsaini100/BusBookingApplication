@@ -27,21 +27,38 @@ import com.timesinternet.busbooking.repositories.TicketRepository;
 import com.timesinternet.busbooking.repositories.UsersRepository;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
-
+/**
+ * Codes for testing of ServiceLayer class
+ * @author Rahul.Saini
+ *
+ */
 class ServiceLayerTest {
-
+	/**
+	 * Mocking the busRepository
+	 */
 	@MockBean
 	BusRepository busRepository;
+	/**
+	 * Mocking the usersRepository
+	 */
 	@MockBean
 	UsersRepository usersRepository;
+	/**
+	 * Mocking the ticketRepository
+	 */
 	@MockBean
 	TicketRepository ticketRepository;
+	/**
+	 * Mocking the cityRepository
+	 */
 	@MockBean
 	CityRepository cityRepository;
 
 	@InjectMocks
 	private ServiceLayer serviceLayer;
-
+	/**
+	 * Test for AvailableBus method
+	 */
 	@Test
 	void AvailableBusesMethod_Test() {
 
@@ -54,7 +71,9 @@ class ServiceLayerTest {
 		assertEquals(3, expected.size());
 
 	}
-
+	/**
+	 * Test for addNewUser
+	 */
 	@Test
 	void addNewUsermethod_Test() {
 		
@@ -68,7 +87,9 @@ class ServiceLayerTest {
 		assertEquals(7,result);
 
 	}
-
+	/**
+	 * Test for showBooking method
+	 */
 	@Test
 	void ShowBookingsMethod_Test() {
 		
@@ -88,6 +109,9 @@ class ServiceLayerTest {
 		assertEquals(2, expected.size());
 
 	}
+	/**
+	 * Test for GenerateTicket
+	 */
 	@Test
 	void TicketGenerateMethod_Test() {
 
@@ -103,7 +127,9 @@ class ServiceLayerTest {
 
 	}
 
-
+	/**
+	 * Test for FindCityByName method
+	 */
 	@Test
 	void findByCityNameMethod_Test() {
 
@@ -117,7 +143,9 @@ class ServiceLayerTest {
 		assertEquals(expected.get(),actual.get());
 
 	}
-
+	/**
+	 * Test for FindUsersByUserPhoneNumber method
+	 */
 	@Test
 	void findUsersByUserPhoneNumberMethod_Test() {
 		

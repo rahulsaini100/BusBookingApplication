@@ -34,17 +34,26 @@ import com.timesinternet.busbooking.controllers.GenerateTicketController;
 import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.entities.Ticket;
 import com.timesinternet.busbooking.services.ServiceLayer;
-
+/**
+ * Codes for testing of GenerateTicketController class
+ * @author Rahul.Saini
+ *
+ */
 @WebMvcTest(value = GenerateTicketController.class)
 @WebAppConfiguration
 class GenerateTicketControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
+	/**
+	 * Mocking the ServiceLayer
+	 */
 	@MockBean
 	private ServiceLayer undertest;
-
+	/**
+	 * Test for the GenerateTicket method
+	 * @throws Exception
+	 */
 	@Test
 	void generateTicketTest() throws Exception {
 
