@@ -14,6 +14,7 @@ import com.timesinternet.busbooking.repositories.TicketRepository;
 
 /**
  * Codes for testing of TicketRepository class
+ * 
  * @author Rahul.Saini
  *
  */
@@ -22,8 +23,9 @@ class TicketRepositoryTest {
 
 	@Autowired
 	private TicketRepository undertest;
+
 	/**
-	 * Testing for FindTicketByBookingId 
+	 * Testing for FindTicketByBookingId
 	 */
 	@Test
 	void FindTicketByBookingid_Test() {
@@ -44,6 +46,7 @@ class TicketRepositoryTest {
 		assertEquals(Expected.getTotalFare(), Actual.getTotalFare());
 
 	}
+
 	/**
 	 * Testing for FindAllBookingByPhoneNumber
 	 */

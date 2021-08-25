@@ -3,12 +3,10 @@ package com.timesinternet.busbooking.testservices;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.naming.java.javaURLContextFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -30,6 +28,7 @@ import com.timesinternet.busbooking.services.ServiceLayer;
 
 /**
  * Codes for testing of ServiceLayer class
+ * 
  * @author Rahul.Saini
  *
  */
@@ -75,28 +74,30 @@ class ServiceLayerTest {
 		assertEquals(3, expected.size());
 
 	}
+
 	/**
 	 * Test for addNewUser
 	 */
 	@Test
 	void AddNewUsermethod_Test() {
-		
-		Users u = new Users("Rahul","8814099999" , "Haryana, Kurukshetra");
-        u.setUserId(7L);
-		
+
+		Users u = new Users("Rahul", "8814099999", "Haryana, Kurukshetra");
+		u.setUserId(7L);
+
 		Mockito.when(usersRepository.save(u)).thenReturn(u);
 
-		long result=serviceLayer.addNewUser(u);
+		long result = serviceLayer.addNewUser(u);
 
-		assertEquals(7,result);
+		assertEquals(7, result);
 
 	}
+
 	/**
 	 * Test for showBooking method
 	 */
 	@Test
 	void ShowBookingsMethod_Test() {
-		
+
 		List<GenerateTicket> Mybookings = new ArrayList<GenerateTicket>();
 		GenerateTicket booking1 = new GenerateTicket(7, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
 				"Yamuna Nagar", Date.valueOf("2021-08-25"), Date.valueOf("2021-08-30"), 5, 2000);
@@ -105,14 +106,15 @@ class ServiceLayerTest {
 
 		Mybookings.add(booking1);
 		Mybookings.add(booking2);
-		
+
 		Mockito.when(ticketRepository.allTicket("8814056123")).thenReturn(Mybookings);
 
 		List<GenerateTicket> expected = serviceLayer.showBooking("8814056123");
-		
+
 		assertEquals(2, expected.size());
 
 	}
+
 	/**
 	 * Test for GenerateTicket
 	 */
@@ -121,13 +123,13 @@ class ServiceLayerTest {
 
 		Ticket ticket = new Ticket(5, "B14", "R13", 5, Date.valueOf("2021-08-30"));
 		ticket.setBookingId(7L);
-		GenerateTicket Expected= new GenerateTicket(7, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
+		GenerateTicket Expected = new GenerateTicket(7, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
 				"Yamuna Nagar", Date.valueOf("2021-08-25"), Date.valueOf("2021-08-30"), 5, 2000);
 		Mockito.when(ticketRepository.save(ticket)).thenReturn(ticket);
 		Mockito.when(ticketRepository.FindTicket(ticket.getBookingId())).thenReturn(Expected);
 		GenerateTicket Actual = serviceLayer.ticketGeneration(ticket);
 
-		assertEquals(Expected,Actual);
+		assertEquals(Expected, Actual);
 
 	}
 
@@ -137,30 +139,30 @@ class ServiceLayerTest {
 	@Test
 	void FindByCityNameMethod_Test() {
 
-		City c=new City();
+		City c = new City();
 		c.setCityName("Ambala");
-		Optional<City> expected= Optional.of(c);	
+		Optional<City> expected = Optional.of(c);
 		Mockito.when(cityRepository.findByCityName("Ambala")).thenReturn(expected);
 
-		Optional<City> actual=serviceLayer.findByCityName("Ambala");
+		Optional<City> actual = serviceLayer.findByCityName("Ambala");
 
-		assertEquals(expected.get(),actual.get());
+		assertEquals(expected.get(), actual.get());
 
 	}
+
 	/**
 	 * Test for FindUsersByUserPhoneNumber method
 	 */
 	@Test
 	void FindUsersByUserPhoneNumberMethod_Test() {
-		
-		Users testobj=new  Users();
+
+		Users testobj = new Users();
 		testobj.setUserAddress("8814056123");
-		Optional<Users> expected=Optional.of(testobj);
+		Optional<Users> expected = Optional.of(testobj);
 		Mockito.when(usersRepository.findUsersByUserPhoneNumber("8814056123")).thenReturn(expected);
 		Optional<Users> actual = serviceLayer.findUsersByUserPhoneNumber("8814056123");
-		assertEquals(expected.get(),actual.get());
+		assertEquals(expected.get(), actual.get());
 
 	}
 
-	
 }

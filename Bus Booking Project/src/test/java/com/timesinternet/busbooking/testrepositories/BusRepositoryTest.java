@@ -14,6 +14,7 @@ import com.timesinternet.busbooking.repositories.BusRepository;
 
 /**
  * Codes for testing of BusRepository class
+ * 
  * @author Rahul.Saini
  *
  */
@@ -22,8 +23,9 @@ class BusRepositoryTest {
 
 	@Autowired
 	private BusRepository undertest;
+
 	/**
-	 * Testing for FindRoute 
+	 * Testing for FindRoute
 	 */
 	@Test
 	void FindRouteMethod_Test() {
@@ -38,8 +40,9 @@ class BusRepositoryTest {
 		assertEquals(4, Allbuses.size());
 
 	}
+
 	/**
-	 * Testing for FindMaxSeats 
+	 * Testing for FindMaxSeats
 	 */
 	@Test
 	void FindMaxSeatsMethod_Test() {

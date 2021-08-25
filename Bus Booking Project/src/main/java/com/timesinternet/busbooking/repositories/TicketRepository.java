@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * TicketRepository contains queries related to ticket
+ * 
  * @author Rahul.Saini and Vikas.Sahani
  *
  */
@@ -17,6 +18,7 @@ import java.util.List;
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
 	/**
 	 * returns the ticket after the confirmation of booking
+	 * 
 	 * @param bookingId
 	 * @return
 	 */
@@ -29,7 +31,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 	GenerateTicket FindTicket(long bookingId);
 
 	/**
-	 * returns list of all ticket booked by a userPhoneNumber	
+	 * returns list of all ticket booked by a userPhoneNumber
+	 * 
 	 * @param userPhoneNumber
 	 * @return
 	 */
@@ -41,6 +44,5 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 			+ "where u.userPhoneNumber=?1")
 
 	List<GenerateTicket> allTicket(String userPhoneNumber);
-	
 
 }

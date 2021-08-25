@@ -28,6 +28,7 @@ import com.timesinternet.busbooking.services.ServiceLayer;
 
 /**
  * Codes for testing of MyBookingController class
+ * 
  * @author Rahul.Saini
  *
  */
@@ -42,8 +43,10 @@ class MyBookingControllerTest {
 	 */
 	@MockBean
 	private ServiceLayer undertest;
+
 	/**
 	 * Testing the ShowMyBooking class
+	 * 
 	 * @throws Exception
 	 */
 	@Test
@@ -81,7 +84,7 @@ class MyBookingControllerTest {
 		JSONArray jsonArray = new JSONArray(mvcResult.getResponse().getContentAsString());
 
 		assertEquals(2, jsonArray.length());
-	
+
 	}
 
 }
