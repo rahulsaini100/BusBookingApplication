@@ -2,7 +2,6 @@ package com.timesinternet.busbooking.entities;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Ticket table represents ticket table in the database 
- * It has attributes bookingId, userId, busId, numberOfSeats, dateOfBooking, journeyDate and routeId
+ * Ticket table represents ticket table in the database It has attributes
+ * bookingId, userId, busId, numberOfSeats, dateOfBooking, journeyDate and
+ * routeId
+ * 
  * @author Vikas.Sahani
  *
  */
@@ -29,10 +30,10 @@ public class Ticket {
 	private Date dateOfBooking;
 	private Date journeyDate;
 	private String routeId;
-	
-	
+
 	/**
 	 * constructor without bookingId
+	 * 
 	 * @param userId
 	 * @param busId
 	 * @param routeId
@@ -47,8 +48,10 @@ public class Ticket {
 		this.journeyDate = journeyDate;
 		this.routeId = routeId;
 	}
+
 	/**
 	 * constructor with bookingId
+	 * 
 	 * @param bookingId
 	 * @param userId
 	 * @param busId
@@ -68,13 +71,14 @@ public class Ticket {
 		this.journeyDate = journeyDate;
 		this.routeId = routeId;
 	}
+
 	/**
 	 * default constructor
 	 */
 	public Ticket() {
 
 	}
-	
+
 	/**
 	 * 
 	 * @return bookingId
@@ -82,13 +86,16 @@ public class Ticket {
 	public long getBookingId() {
 		return bookingId;
 	}
+
 	/**
 	 * sets nookingId
+	 * 
 	 * @param bookingId
 	 */
 	public void setBookingId(long bookingId) {
 		this.bookingId = bookingId;
 	}
+
 	/**
 	 * 
 	 * @return userId
@@ -96,13 +103,16 @@ public class Ticket {
 	public long getUserId() {
 		return userId;
 	}
+
 	/**
 	 * sets userId
+	 * 
 	 * @param userId
 	 */
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
+
 	/**
 	 * 
 	 * @return busId
@@ -110,13 +120,16 @@ public class Ticket {
 	public String getBusId() {
 		return busId;
 	}
+
 	/**
 	 * sets busId
+	 * 
 	 * @param busId
 	 */
 	public void setBusId(String busId) {
 		this.busId = busId;
 	}
+
 	/**
 	 * 
 	 * @return numberOfSeats
@@ -124,13 +137,16 @@ public class Ticket {
 	public long getnumberOfSeats() {
 		return numberOfSeats;
 	}
+
 	/**
 	 * sets numberOfSeats
+	 * 
 	 * @param numberOfSeats
 	 */
 	public void setnumberOfSeats(long numberOfSeats) {
 		this.numberOfSeats = numberOfSeats;
 	}
+
 	/**
 	 * 
 	 * @return dateOfBooking
@@ -138,13 +154,16 @@ public class Ticket {
 	public Date getDateOfBooking() {
 		return dateOfBooking;
 	}
+
 	/**
 	 * sets dateOfBooking
+	 * 
 	 * @param dateOfBooking
 	 */
 	public void setDateOfBooking(Date dateOfBooking) {
 		this.dateOfBooking = dateOfBooking;
 	}
+
 	/**
 	 * 
 	 * @return routeId
@@ -152,13 +171,16 @@ public class Ticket {
 	public String getRouteId() {
 		return routeId;
 	}
+
 	/**
 	 * sets routeId
+	 * 
 	 * @param routeId
 	 */
 	public void setRouteId(String routeId) {
 		this.routeId = routeId;
 	}
+
 	/**
 	 * 
 	 * @return journeyDate
@@ -166,8 +188,10 @@ public class Ticket {
 	public Date getjourneyDate() {
 		return journeyDate;
 	}
+
 	/**
 	 * sets journeydate
+	 * 
 	 * @param journeyDate
 	 */
 	public void setjourneyDate(Date journeyDate) {

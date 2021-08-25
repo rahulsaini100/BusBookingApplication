@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 /**
- * UserRepository contains queries related to user's data 
+ * UserRepository contains queries related to user's data
+ * 
  * @author Vikas.Sahani
  *
  */
@@ -17,10 +18,11 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
 	/**
 	 * This checks weather a Phone number exists in database or not
+	 * 
 	 * @param userPhoneNumber
 	 * @return
 	 */
 
 	Optional<Users> findUsersByUserPhoneNumber(String userPhoneNumber);
-	
+
 }

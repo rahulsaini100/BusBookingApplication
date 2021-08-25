@@ -3,7 +3,9 @@ package com.timesinternet.busbooking.entities;
 import java.util.Date;
 
 /**
- * AvailableBus class represents the class whose object will be pass when user will search for buses of his/her requirement
+ * AvailableBus class represents the class whose object will be pass when user
+ * will search for buses of his/her requirement
+ * 
  * @author Rahul.Saini
  *
  */
@@ -25,8 +27,10 @@ public class AvailableBus {
 	public AvailableBus() {
 		super();
 	}
+
 	/**
 	 * constructs and initializes AvailableBus class
+	 * 
 	 * @param busId
 	 * @param arrivalTime
 	 * @param departureTime
@@ -51,103 +55,155 @@ public class AvailableBus {
 		this.routeId = routeId;
 	}
 
-	
 	/**
-	 *  
+	 * 
 	 * @return totalSeats
 	 */
 	public long getTotalSeats() {
 		return totalSeats;
 	}
 
+	/**
+	 * sets totalSeats
+	 * 
+	 * @param totalSeats
+	 */
 	public void setTotalSeats(long totalSeats) {
 		this.totalSeats = totalSeats;
 	}
+
 	/**
-	 *  
+	 * 
 	 * @return busId
 	 */
 	public String getBusId() {
 		return busId;
 	}
 
+	/**
+	 * sets busId
+	 * 
+	 * @param busId
+	 */
 	public void setBusId(String busId) {
 		this.busId = busId;
 	}
+
 	/**
-	 *  
+	 * 
 	 * @return arrivalTime
 	 */
 	public Date getArrivalTime() {
 		return arrivalTime;
 	}
 
+	/**
+	 * sets arrivalTime
+	 * 
+	 * @param arrivalTime
+	 */
 	public void setArrivalTime(Date arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
+
 	/**
-	 *  
+	 * 
 	 * @return departureTime
 	 */
 	public Date getDepartureTime() {
 		return departureTime;
 	}
 
+	/**
+	 * sets departureTime
+	 * 
+	 * @param depastureTime
+	 */
 	public void setDepartureTime(Date depastureTime) {
 		this.departureTime = depastureTime;
 	}
+
 	/**
-	 *  
+	 * 
 	 * @return busType
 	 */
 	public String getbusType() {
 		return busType;
 	}
 
+	/**
+	 * sets busType
+	 * 
+	 * @param busType
+	 */
 	public void setbusType(String busType) {
 		this.busType = busType;
 	}
+
 	/**
-	 *  
+	 * 
 	 * @return busProvider
 	 */
 	public String getbusProvider() {
 		return busProvider;
 	}
 
+	/**
+	 * sets busProvider
+	 * 
+	 * @param busProvider
+	 */
 	public void setbusProvider(String busProvider) {
 		this.busProvider = busProvider;
 	}
+
 	/**
-	 *  
+	 * 
 	 * @return ticketPrice
 	 */
 	public long getTicketPrice() {
 		return ticketPrice;
 	}
 
+	/**
+	 * sets ticketPrice
+	 * 
+	 * @param ticketPrice
+	 */
 	public void setTicketPrice(long ticketPrice) {
 		this.ticketPrice = ticketPrice;
 	}
+
 	/**
-	 *  
+	 * 
 	 * @return availableSeat
 	 */
 	public long getAvailableSeat() {
 		return availableSeat;
 	}
 
+	/**
+	 * sets availableSeat
+	 * 
+	 * @param availableSeat
+	 */
 	public void setAvailableSeat(long availableSeat) {
 		this.availableSeat = availableSeat;
 	}
+
 	/**
-	 *  
+	 * 
 	 * @return routeId
 	 */
 	public String getRouteId() {
 		return routeId;
 	}
 
+	/**
+	 * sets routeId
+	 * 
+	 * @param routeId
+	 */
 	public void setRouteId(String routeId) {
 		this.routeId = routeId;
 	}

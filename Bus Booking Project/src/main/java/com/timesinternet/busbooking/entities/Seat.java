@@ -6,8 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Seat class represents seat table in database
- * It has attributes busId and totalSeat
+ * Seat class represents seat table in database It has attributes busId and
+ * totalSeat
+ * 
  * @author Vikas.Sahani
  *
  */
@@ -19,14 +20,17 @@ public class Seat {
 	@Column(length = 5)
 	private String busId;
 	private Long totalSeat;
+
 	/**
 	 * default constructor
 	 */
 	public Seat() {
 
 	}
+
 	/**
 	 * constructs and initializes Seat class
+	 * 
 	 * @param busId
 	 * @param totalSeat
 	 */
@@ -35,6 +39,7 @@ public class Seat {
 		this.busId = busId;
 		this.totalSeat = totalSeat;
 	}
+
 	/**
 	 * 
 	 * @return busId
@@ -42,13 +47,16 @@ public class Seat {
 	public String getBusId() {
 		return busId;
 	}
+
 	/**
 	 * sets busId
+	 * 
 	 * @param busId
 	 */
 	public void setBusId(String busId) {
 		this.busId = busId;
 	}
+
 	/**
 	 * 
 	 * @return totalSeat
@@ -56,8 +64,10 @@ public class Seat {
 	public Long getTotalSeat() {
 		return totalSeat;
 	}
+
 	/**
 	 * sets totalSeat
+	 * 
 	 * @param totalSeat
 	 */
 	public void setTotalSeat(Long totalSeat) {

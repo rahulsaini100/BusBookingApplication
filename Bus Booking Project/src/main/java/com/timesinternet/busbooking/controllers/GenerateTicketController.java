@@ -1,20 +1,18 @@
 package com.timesinternet.busbooking.controllers;
 
 import java.sql.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.entities.Ticket;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
-
 /**
- * This is a controller class which contains url for generateTicket API 
+ * This is a controller class which contains url for generateTicket API
+ * 
  * @author Rahul.Saini
  *
  */
@@ -28,10 +26,11 @@ public class GenerateTicketController {
 	public GenerateTicketController(ServiceLayer serviceLayer) {
 		this.serviceLayer = serviceLayer;
 	}
-	
+
 	/**
-	 * generateTicket API takes input
-	 * and returns a generateTicket type object which the help of a method ticketGeneration of service layer
+	 * generateTicket API takes input and returns a generateTicket type object which
+	 * the help of a method ticketGeneration of service layer
+	 * 
 	 * @param userId
 	 * @param busId
 	 * @param routeId

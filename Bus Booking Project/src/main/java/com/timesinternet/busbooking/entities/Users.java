@@ -8,8 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * User class represents user table in database
- * It contains attributes userId, userName, userPhoneNumber, userAddress
+ * User class represents user table in database It contains attributes userId,
+ * userName, userPhoneNumber, userAddress
+ * 
  * @author Vikas.Sahani
  *
  */
@@ -18,33 +19,37 @@ import javax.persistence.Table;
 @Table
 public class Users {
 	@Id
-	@Column(name="userId")
+	@Column(name = "userId")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long userId;
-	
+
 	private String userName;
 	private String userPhoneNumber;
 	private String userAddress;
-	
+
 	/**
-	 * default constructor 
+	 * default constructor
 	 */
 	public Users() {
 
 	}
+
 	/**
 	 * constructs and initialize Users class without userId
+	 * 
 	 * @param userName
 	 * @param userPhoneNumber
 	 * @param userAddress
 	 */
-	public Users( String userName, String userPhoneNumber, String userAddress) {
+	public Users(String userName, String userPhoneNumber, String userAddress) {
 		this.userName = userName;
 		this.userPhoneNumber = userPhoneNumber;
 		this.userAddress = userAddress;
-	} 
+	}
+
 	/**
 	 * constructs and initialize Users class with userId
+	 * 
 	 * @param userName
 	 * @param userPhoneNumber
 	 * @param userAddress
@@ -56,7 +61,7 @@ public class Users {
 		this.userPhoneNumber = userPhoneNumber;
 		this.userAddress = userAddress;
 	}
-	
+
 	/**
 	 * 
 	 * @return userId
@@ -64,13 +69,16 @@ public class Users {
 	public long getUserId() {
 		return userId;
 	}
+
 	/**
 	 * sets userId
+	 * 
 	 * @param userId
 	 */
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
+
 	/**
 	 * 
 	 * @return userName
@@ -78,13 +86,16 @@ public class Users {
 	public String getUserName() {
 		return userName;
 	}
+
 	/**
 	 * sets userName
+	 * 
 	 * @param userName
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	/**
 	 * 
 	 * @return userPhoneNumber
@@ -92,13 +103,16 @@ public class Users {
 	public String getUserPhoneNumber() {
 		return userPhoneNumber;
 	}
+
 	/**
 	 * sets userPhoneNumber
+	 * 
 	 * @param userPhoneNumber
 	 */
 	public void setUserPhoneNumber(String userPhoneNumber) {
 		this.userPhoneNumber = userPhoneNumber;
 	}
+
 	/**
 	 * 
 	 * @return userAddress
@@ -106,8 +120,10 @@ public class Users {
 	public String getUserAddress() {
 		return userAddress;
 	}
+
 	/**
 	 * sets userAddress
+	 * 
 	 * @param userAddress
 	 */
 	public void setUserAddress(String userAddress) {

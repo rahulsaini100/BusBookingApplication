@@ -12,12 +12,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.repositories.TicketRepository;
 
+/**
+ * Codes for testing of TicketRepository class
+ * 
+ * @author Rahul.Saini
+ *
+ */
 @SpringBootTest
 class TicketRepositoryTest {
 
 	@Autowired
 	private TicketRepository undertest;
 
+	/**
+	 * Testing for FindTicketByBookingId
+	 */
 	@Test
 	void FindTicketByBookingid_Test() {
 
@@ -38,6 +47,9 @@ class TicketRepositoryTest {
 
 	}
 
+	/**
+	 * Testing for FindAllBookingByPhoneNumber
+	 */
 	@Test
 	void FindAllBookingsByPhoneNumber_Test() {
 

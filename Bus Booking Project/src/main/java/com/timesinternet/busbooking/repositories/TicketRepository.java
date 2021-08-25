@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * TicketRepository contains queries related to ticket
+ * 
  * @author Rahul.Saini and Vikas.Sahani
  *
  */
@@ -17,10 +18,11 @@ import java.util.List;
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
 	/**
 	 * returns the ticket after the confirmation of booking
+	 * 
 	 * @param bookingId
 	 * @return
 	 */
-	@Query("select new com.timesinternet.busbooking.entities.GenerateTicket(t.bookingId,u.userName,"
+	@Query("select new com.timesinternet.busbooking.entities.GenerateTicket(u.userId,t.bookingId,u.userName,"
 			+ " u.userPhoneNumber,u.userAddress,t.busId,(select cityName from City where cityId=r.fromCityId),"
 			+ "(select cityName from City where cityId=r.toCityId),t.dateOfBooking,t.journeyDate,t.numberOfSeats,"
 			+ "p.ticketPrice*t.numberOfSeats)" + " from Ticket as t INNER join Users as u on t.userId=u.userId "
@@ -29,11 +31,12 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 	GenerateTicket FindTicket(long bookingId);
 
 	/**
-	 * returns list of all ticket booked by a userPhoneNumber	
+	 * returns list of all ticket booked by a userPhoneNumber
+	 * 
 	 * @param userPhoneNumber
 	 * @return
 	 */
-	@Query("select new com.timesinternet.busbooking.entities.GenerateTicket(t.bookingId,u.userId,u.userName,"
+	@Query("select new com.timesinternet.busbooking.entities.GenerateTicket(u.userId,t.bookingId,u.userName,"
 			+ " u.userPhoneNumber,u.userAddress,t.busId,(select cityName from City where cityId=r.fromCityId),"
 			+ "(select cityName from City where cityId=r.toCityId),t.dateOfBooking,t.journeyDate,t.numberOfSeats,"
 			+ "p.ticketPrice*t.numberOfSeats)" + " from Ticket as t INNER join Users as u on t.userId=u.userId "
@@ -41,6 +44,5 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 			+ "where u.userPhoneNumber=?1")
 
 	List<GenerateTicket> allTicket(String userPhoneNumber);
-	
 
 }
