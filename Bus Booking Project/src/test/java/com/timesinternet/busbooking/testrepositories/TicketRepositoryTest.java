@@ -26,7 +26,7 @@ class TicketRepositoryTest {
 	 * Testing for FindTicketByBookingId 
 	 */
 	@Test
-	void findTicketByBookingid_Test() {
+	void FindTicketByBookingid_Test() {
 
 		GenerateTicket Expected = new GenerateTicket(3, "krishna", "8814056456", "Delhi,NCR", "B21", "Ambala",
 				"Yamuna Nagar", Date.valueOf("2021-08-20"), Date.valueOf("2021-08-21"), 10, 3500);

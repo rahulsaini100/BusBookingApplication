@@ -60,7 +60,7 @@ class SaveUserControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	void ifusernameNotContainsAlphabatOrSpacesOnly_BadRequest_Test() throws Exception{
+	void IFuserNameNotContainsAlphabatOrSpacesOnly_BadRequest_Test() throws Exception{
 		
 		MvcResult mvcResult = mockMvc.perform(post("/saveuser?userName=Vikas123&userPhoneNumber=8814056123&userAddress=Delhi,NCR")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
@@ -74,7 +74,7 @@ class SaveUserControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	void ifuserNumberNotContainDigitsOnly_BadRequest_Test() throws Exception{
+	void IfuserNumberNotContainDigitsOnly_BadRequest_Test() throws Exception{
 		
 		MvcResult mvcResult = mockMvc.perform(post("/saveuser?userName=Vikas&userPhoneNumber=8814056abc&userAddress=Delhi,NCR")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
@@ -88,7 +88,7 @@ class SaveUserControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	void ifuserNumberGreaterThan10Digits_BadRequest_Test() throws Exception{
+	void IfuserNumberGreaterThan10Digits_BadRequest_Test() throws Exception{
 		
 		MvcResult mvcResult = mockMvc.perform(post("/saveuser?userName=Vikas&userPhoneNumber=88140562345&userAddress=Delhi,NCR")).andReturn();
 		int status = mvcResult.getResponse().getStatus();
@@ -107,10 +107,8 @@ class SaveUserControllerTest {
 		Users u = new Users("Vikas","8814056234", "Delhi,NCR");
 		Long userId=20L;
 		Mockito.when(undertest.addNewUser(u)).thenReturn(userId);
-		MvcResult mvcResult= mockMvc.perform(post("/saveuser?userName=Vikas&userPhoneNumber=8814056234&userAddress=Delhi,NCR"))
+		mockMvc.perform(post("/saveuser?userName=Vikas&userPhoneNumber=8814056234&userAddress=Delhi,NCR"))
 	    .andExpect(status().isOk()).andReturn();
-		//System.out.println(mvcResult);
-//		assertEquals(20,mvcResult.getResponse());
 		
 	}
 }

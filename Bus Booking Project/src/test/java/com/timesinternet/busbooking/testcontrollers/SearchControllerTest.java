@@ -39,7 +39,6 @@ import com.timesinternet.busbooking.services.ServiceLayer;
 @WebAppConfiguration
 class SearchControllerTest {
 
- 
 	@Autowired
 	private MockMvc mockMvc;
 	/**
@@ -54,8 +53,8 @@ class SearchControllerTest {
 	@Test
 	void FromAndToCitySame_BadRequest_Test() throws Exception {
 
-		MvcResult mvcResult = mockMvc.perform(post("/search?fromCityName=Ambala&toCityName=Ambala&journeyDate=2021-08-30&numberOfPassenger=5")).andReturn();
-
+		MvcResult mvcResult = mockMvc.perform(post("/search?fromCityName=Ambala&toCityName=Ambala&journeyDate=2021-08-30&numberOfPassenger=5"))
+				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(400, status);
 		String message = mvcResult.getResponse().getErrorMessage();
@@ -68,12 +67,13 @@ class SearchControllerTest {
 	 */
 	@Test
 	void FromCityNotPresentInDatabase_BadRequest_Test() throws Exception {
-		City c=new City();
+		City c = new City();
 		c.setCityName("Ambala");
-		Optional<City> obj= Optional.of(c);
+		Optional<City> obj = Optional.of(c);
 		Mockito.when(undertest.findByCityName("Ambala")).thenReturn(obj);
-		MvcResult mvcResult = mockMvc.perform(post("/search?fromCityName=Ludhiana&"
-				+ "toCityName=Ambala&journeyDate=2021-08-30&numberOfPassenger=5")).andReturn();
+		MvcResult mvcResult = mockMvc.perform(
+				post("/search?fromCityName=Ludhiana&" + "toCityName=Ambala&journeyDate=2021-08-30&numberOfPassenger=5"))
+				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(400, status);
 		String message = mvcResult.getResponse().getErrorMessage();
@@ -86,12 +86,15 @@ class SearchControllerTest {
 	 */
 	@Test
 	void ToCityNotPresentInDatabase_BadRequest_Test() throws Exception {
-		
-		City c=new City();
+
+		City c = new City();
 		c.setCityName("Ambala");
-		Optional<City> obj= Optional.of(c);
+		Optional<City> obj = Optional.of(c);
 		Mockito.when(undertest.findByCityName("Ambala")).thenReturn(obj);
-		MvcResult mvcResult = mockMvc.perform(post("/search?fromCityName=Ambala&toCityName=ludhiana&journeyDate=2021-08-30&numberOfPassenger=5")).andReturn();
+		MvcResult mvcResult = mockMvc
+				.perform(post(
+						"/search?fromCityName=Ambala&toCityName=ludhiana&journeyDate=2021-08-30&numberOfPassenger=5"))
+				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(400, status);
 		String message = mvcResult.getResponse().getErrorMessage();
@@ -104,12 +107,16 @@ class SearchControllerTest {
 	 */
 	@Test
 	void FromCityAndToCityNotPresentInDatabase_BadRequest_Test() throws Exception {
-		
-		MvcResult mvcResult = mockMvc.perform(post("/search?fromCityName=Patiala&toCityName=ludhiana&journeyDate=2021-08-30&numberOfPassenger=5")).andReturn();
+
+		MvcResult mvcResult = mockMvc
+				.perform(post(
+						"/search?fromCityName=Patiala&toCityName=ludhiana&journeyDate=2021-08-30&numberOfPassenger=5"))
+				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(400, status);
 		String message = mvcResult.getResponse().getErrorMessage();
-		assertEquals("From And To city Not found in Our locations. Choose Any District from Haryana as locations!",message);
+		assertEquals("From And To city Not found in Our locations. Choose Any District from Haryana as locations!",
+				message);
 	}
 	/**
 	 * Testing the availability of bus
@@ -117,23 +124,24 @@ class SearchControllerTest {
 	 */
 	@Test
 	void NoBusAvailable_BadRequest_Test() throws Exception {
-		
-		City c=new City();
-		City c1=new City();
+
+		City c = new City();
+		City c1 = new City();
 		c.setCityName("karnal");
 		c1.setCityName("Yamuna Nagar");
-		Optional<City> obj= Optional.of(c);
-		Optional<City> obj1= Optional.of(c1);
+		Optional<City> obj = Optional.of(c);
+		Optional<City> obj1 = Optional.of(c1);
 		Mockito.when(undertest.findByCityName("Karnal")).thenReturn(obj);
 		Mockito.when(undertest.findByCityName("Yamuna Nagar")).thenReturn(obj1);
-		Mockito.when(undertest.MaxAvailableSeats("karnal","Yamuna Nagar",new Date(2021-8-30))).thenReturn(null);
-		MvcResult mvcResult = mockMvc.perform(post("/search?fromCityName=Karnal&toCityName=Yamuna Nagar&journeyDate=2021-08-30&numberOfPassenger=5")).andReturn();
+		Mockito.when(undertest.MaxAvailableSeats("karnal", "Yamuna Nagar", new Date(2021 - 8 - 30))).thenReturn(null);
+		MvcResult mvcResult = mockMvc.perform(
+				post("/search?fromCityName=Karnal&toCityName=Yamuna Nagar&journeyDate=2021-08-30&numberOfPassenger=5"))
+				.andReturn();
 		int status = mvcResult.getResponse().getStatus();
 		assertEquals(400, status);
 		String message = mvcResult.getResponse().getErrorMessage();
 		assertEquals("Oh Sorry. No Bus available on this route!", message);
 
 	}
-	
 
 }

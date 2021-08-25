@@ -55,7 +55,7 @@ class GenerateTicketControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	void generateTicketTest() throws Exception {
+	void GenerateTicketMethod_Test() throws Exception {
 
 		GenerateTicket testobj = new GenerateTicket(7, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
 				"Yamuna Nagar", Date.valueOf("2021-08-25"), Date.valueOf("2021-08-30"), 5, 2000);

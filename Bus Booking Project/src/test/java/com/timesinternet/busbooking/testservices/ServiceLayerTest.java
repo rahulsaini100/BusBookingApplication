@@ -79,7 +79,7 @@ class ServiceLayerTest {
 	 * Test for addNewUser
 	 */
 	@Test
-	void addNewUsermethod_Test() {
+	void AddNewUsermethod_Test() {
 		
 		Users u = new Users("Rahul","8814099999" , "Haryana, Kurukshetra");
         u.setUserId(7L);
@@ -135,7 +135,7 @@ class ServiceLayerTest {
 	 * Test for FindCityByName method
 	 */
 	@Test
-	void findByCityNameMethod_Test() {
+	void FindByCityNameMethod_Test() {
 
 		City c=new City();
 		c.setCityName("Ambala");
@@ -151,7 +151,7 @@ class ServiceLayerTest {
 	 * Test for FindUsersByUserPhoneNumber method
 	 */
 	@Test
-	void findUsersByUserPhoneNumberMethod_Test() {
+	void FindUsersByUserPhoneNumberMethod_Test() {
 		
 		Users testobj=new  Users();
 		testobj.setUserAddress("8814056123");
@@ -163,5 +163,4 @@ class ServiceLayerTest {
 	}
 
 	
-
 }

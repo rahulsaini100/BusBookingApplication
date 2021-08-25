@@ -47,7 +47,7 @@ class MyBookingControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	void ShowMybookingTest() throws Exception {
+	void ShowMybookingMethod_Test() throws Exception {
 
 		List<GenerateTicket> Mybookings = new ArrayList<GenerateTicket>();
 		GenerateTicket booking1 = new GenerateTicket(7, "Robin", "8814056123", "Haryana, Kuk", "B14", "Panchkula",
