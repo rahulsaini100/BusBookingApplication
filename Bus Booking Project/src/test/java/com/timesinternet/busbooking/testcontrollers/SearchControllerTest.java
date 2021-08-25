@@ -30,6 +30,11 @@ import com.timesinternet.busbooking.entities.GenerateTicket;
 import com.timesinternet.busbooking.repositories.CityRepository;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
+/**
+ * Codes for testing of SearchController class
+ * @author Rahul.Saini
+ *
+ */
 @WebMvcTest(value = SearchController.class)
 @WebAppConfiguration
 class SearchControllerTest {
@@ -37,10 +42,15 @@ class SearchControllerTest {
  
 	@Autowired
 	private MockMvc mockMvc;
-
+	/**
+	 * Mocking the ServiceLayer
+	 */
 	@MockBean
 	private ServiceLayer undertest;
-
+	/**
+	 * Testing weather fromCityName and toCityName are same
+	 * @throws Exception
+	 */
 	@Test
 	void FromAndToCitySame_BadRequest_Test() throws Exception {
 
@@ -52,7 +62,10 @@ class SearchControllerTest {
 		assertEquals("From city and To city can not be same. Choose Again", message);
 
 	}
-
+	/**
+	 * Testing weather fromCity present in databaase or not
+	 * @throws Exception
+	 */
 	@Test
 	void FromCityNotPresentInDatabase_BadRequest_Test() throws Exception {
 		City c=new City();
@@ -67,7 +80,10 @@ class SearchControllerTest {
 		assertEquals("From city Not found in our locations. Choose Any District from Haryana as From city!", message);
 
 	}
-
+	/**
+	 * Testing weather toCityName is present on database or not
+	 * @throws Exception
+	 */
 	@Test
 	void ToCityNotPresentInDatabase_BadRequest_Test() throws Exception {
 		
@@ -82,7 +98,10 @@ class SearchControllerTest {
 		assertEquals("To city Not found in our locations. Choose Any District from Haryana as To city!", message);
 
 	}
-
+	/**
+	 * Testing weather fromCityName and toCityName is present in database or not
+	 * @throws Exception
+	 */
 	@Test
 	void FromCityAndToCityNotPresentInDatabase_BadRequest_Test() throws Exception {
 		
@@ -92,7 +111,10 @@ class SearchControllerTest {
 		String message = mvcResult.getResponse().getErrorMessage();
 		assertEquals("From And To city Not found in Our locations. Choose Any District from Haryana as locations!",message);
 	}
-
+	/**
+	 * Testing the availability of bus
+	 * @throws Exception
+	 */
 	@Test
 	void NoBusAvailable_BadRequest_Test() throws Exception {
 		

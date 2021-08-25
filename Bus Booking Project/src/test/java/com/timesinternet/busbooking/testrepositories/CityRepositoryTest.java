@@ -15,12 +15,19 @@ import com.timesinternet.busbooking.entities.City;
 
 import com.timesinternet.busbooking.repositories.CityRepository;
 
+/**
+ * Codes for testing of CityRepository class
+ * @author Rahul.Saini
+ *
+ */
 @SpringBootTest
 class CityRepositoryTest {
 
 	@Autowired
 	private CityRepository undertest;
-	
+	/**
+	 * Testing if City is present  
+	 */
 	@Test
 	void IfCityPresentFindByCityName_Test() {
 		
@@ -30,7 +37,9 @@ class CityRepositoryTest {
 		assertEquals(true, cityOptional.isPresent());
 	}
 
-	
+	/**
+	 * Testing if city is not present
+	 */
 	@Test
 	void IfCityNotPresentFindByCityName_Test() {
 		

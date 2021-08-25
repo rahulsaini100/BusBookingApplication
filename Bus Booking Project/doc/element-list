@@ -1,1 +1,8 @@
+com.timesinternet.busbooking
+com.timesinternet.busbooking.controllers
+com.timesinternet.busbooking.entities
+com.timesinternet.busbooking.repositories
 com.timesinternet.busbooking.services
+com.timesinternet.busbooking.testcontrollers
+com.timesinternet.busbooking.testrepositories
+com.timesinternet.busbooking.testservices

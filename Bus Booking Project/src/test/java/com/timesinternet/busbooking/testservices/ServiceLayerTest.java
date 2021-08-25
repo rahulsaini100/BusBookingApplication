@@ -28,22 +28,56 @@ import com.timesinternet.busbooking.repositories.TicketRepository;
 import com.timesinternet.busbooking.repositories.UsersRepository;
 import com.timesinternet.busbooking.services.ServiceLayer;
 
+/**
+ * Codes for testing of ServiceLayer class
+ * @author Rahul.Saini
+ *
+ */
 @ExtendWith(SpringExtension.class)
 @ExtendWith(MockitoExtension.class)
 class ServiceLayerTest {
 
 	@InjectMocks
 	ServiceLayer serviceLayer;
-	
+	/**
+	 * Mocking the busRepository
+	 */
 	@MockBean
 	BusRepository busRepository;
+	/**
+	 * Mocking the usersRepository
+	 */
 	@MockBean
 	UsersRepository usersRepository;
+	/**
+	 * Mocking the ticketRepository
+	 */
 	@MockBean
 	TicketRepository ticketRepository;
+	/**
+	 * Mocking the cityRepository
+	 */
 	@MockBean
 	CityRepository cityRepository;
 
+	/**
+	 * Test for AvailableBus method
+	 */
+	@Test
+	void AvailableBusesMethod_Test() {
+
+		Mockito.when(busRepository.FindRoute("Ambala", "Yamuna Nagar", Date.valueOf("2021-08-30"), 10))
+				.thenReturn(null);
+
+		List<AvailableBus> expected = serviceLayer.availableBuses("Ambala", "Yamuna Nagar", Date.valueOf("2021-08-30"),
+				10);
+
+		assertEquals(3, expected.size());
+
+	}
+	/**
+	 * Test for addNewUser
+	 */
 	@Test
 	void addNewUsermethod_Test() {
 		
@@ -57,7 +91,9 @@ class ServiceLayerTest {
 		assertEquals(7,result);
 
 	}
-
+	/**
+	 * Test for showBooking method
+	 */
 	@Test
 	void ShowBookingsMethod_Test() {
 		
@@ -77,6 +113,9 @@ class ServiceLayerTest {
 		assertEquals(2, expected.size());
 
 	}
+	/**
+	 * Test for GenerateTicket
+	 */
 	@Test
 	void TicketGenerateMethod_Test() {
 
@@ -92,7 +131,9 @@ class ServiceLayerTest {
 
 	}
 
-
+	/**
+	 * Test for FindCityByName method
+	 */
 	@Test
 	void findByCityNameMethod_Test() {
 
@@ -106,7 +147,9 @@ class ServiceLayerTest {
 		assertEquals(expected.get(),actual.get());
 
 	}
-
+	/**
+	 * Test for FindUsersByUserPhoneNumber method
+	 */
 	@Test
 	void findUsersByUserPhoneNumberMethod_Test() {
 		

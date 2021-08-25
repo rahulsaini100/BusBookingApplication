@@ -12,12 +12,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.timesinternet.busbooking.entities.AvailableBus;
 import com.timesinternet.busbooking.repositories.BusRepository;
 
+/**
+ * Codes for testing of BusRepository class
+ * @author Rahul.Saini
+ *
+ */
 @SpringBootTest
 class BusRepositoryTest {
 
 	@Autowired
 	private BusRepository undertest;
-
+	/**
+	 * Testing for FindRoute 
+	 */
 	@Test
 	void FindRoute_Test() {
 
@@ -31,7 +38,9 @@ class BusRepositoryTest {
 		assertEquals(4, Allbuses.size());
 
 	}
-
+	/**
+	 * Testing for FindMaxSeats 
+	 */
 	@Test
 	void FindMaxSeats_Test() {
 
