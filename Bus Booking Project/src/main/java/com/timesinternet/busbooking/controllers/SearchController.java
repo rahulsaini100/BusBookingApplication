@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.*;
 import java.sql.Date;
+import java.sql.Time;
 
 /**
  * This controller contains url for search API
@@ -44,7 +45,7 @@ public class SearchController {
 	 */
 	@PostMapping(value = "/search")
 	public List<AvailableBus> AvailableBuses(@RequestParam String fromCityName, @RequestParam String toCityName,
-			@RequestParam Date journeyDate, @RequestParam long numberOfPassenger) {
+			@RequestParam Date journeyDate, @RequestParam int numberOfPassenger) {
 		/**
 		 * checks if fromCityName and toCityName are same or different
 		 */
@@ -92,12 +93,14 @@ public class SearchController {
 		/**
 		 * finds maximum available seats
 		 */
+		
 		String MaxAvailableSeats = serviceLayer.MaxAvailableSeats(fromCityName, toCityName, journeyDate);
-
+      
+	
 		/**
 		 * returns error 400
 		 */
-		if (MaxAvailableSeats == null) {
+		if (MaxAvailableSeats== null) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Oh Sorry. No Bus available on this route!");
 		}
 		/**
@@ -121,7 +124,13 @@ public class SearchController {
 							+ " and try Again!");
 		}
 
-		return serviceLayer.availableBuses(fromCityName, toCityName, journeyDate, numberOfPassenger);
+		List<Object[]> objectAvailablebus=serviceLayer.availableBuses(fromCityName, toCityName, journeyDate, numberOfPassenger);
+		List<AvailableBus> availableBus= new ArrayList<AvailableBus>();
+		for (Object[] obj : objectAvailablebus) {
+			  
+			availableBus.add(new AvailableBus((String)obj[0],(Time)obj[1],(Time)obj[2],(String)obj[3],(String)obj[4],obj[5],obj[6],obj[7],(String)obj[8]));
+		}
+		return availableBus;
 
 	}
 }
