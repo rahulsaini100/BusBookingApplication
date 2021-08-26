@@ -8,6 +8,7 @@ import com.timesinternet.busbooking.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,8 +50,8 @@ public class ServiceLayer {
 	 * @param numberOfPassenger
 	 * @return
 	 */
-	public List<AvailableBus> availableBuses(String fromCityName, String toCityName, Date journeyDate,
-			long numberOfPassenger) {
+	public List<Object[]> availableBuses(String fromCityName, String toCityName, Date journeyDate,
+			int numberOfPassenger) {
 
 		return busRepository.FindRoute(fromCityName, toCityName, journeyDate, numberOfPassenger);
 
@@ -101,7 +102,7 @@ public class ServiceLayer {
 	 */
 
 	public String MaxAvailableSeats(String fromCityName, String toCityName, Date journeyDate) {
-
+	
 		return busRepository.MaxSeats(fromCityName, toCityName, journeyDate);
 	}
 	

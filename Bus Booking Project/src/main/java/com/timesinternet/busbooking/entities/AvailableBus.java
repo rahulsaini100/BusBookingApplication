@@ -1,6 +1,8 @@
 package com.timesinternet.busbooking.entities;
 
+import java.sql.Time;
 import java.util.Date;
+
 
 /**
  * AvailableBus class represents the class whose object will be pass when user
@@ -12,13 +14,13 @@ import java.util.Date;
 public class AvailableBus {
 
 	private String busId;
-	private Date departureTime;
-	private Date arrivalTime;
+	private Time departureTime;
+	private Time arrivalTime;
 	private String busType;
 	private String busProvider;
-	private long ticketPrice;
-	private long totalSeats;
-	private long availableSeat;
+	private Object ticketPrice;
+	private Object totalSeats;
+	private Object availableSeat;
 	private String routeId;
 
 	/**
@@ -41,8 +43,8 @@ public class AvailableBus {
 	 * @param availableSeat
 	 * @param routeId
 	 */
-	public AvailableBus(String busId, Date arrivalTime, Date departureTime, String busType, String busProvider,
-			long ticketPrice, long totalSeats, long availableSeat, String routeId) {
+	public AvailableBus(String busId, Time arrivalTime, Time departureTime, String busType, String busProvider,
+			Object ticketPrice, Object totalSeats, Object availableSeat, String routeId) {
 		super();
 		this.busId = busId;
 		this.arrivalTime = arrivalTime;
@@ -59,7 +61,7 @@ public class AvailableBus {
 	 * 
 	 * @return totalSeats
 	 */
-	public long getTotalSeats() {
+	public Object getTotalSeats() {
 		return totalSeats;
 	}
 
@@ -68,7 +70,7 @@ public class AvailableBus {
 	 * 
 	 * @param totalSeats
 	 */
-	public void setTotalSeats(long totalSeats) {
+	public void setTotalSeats(Object totalSeats) {
 		this.totalSeats = totalSeats;
 	}
 
@@ -102,7 +104,7 @@ public class AvailableBus {
 	 * 
 	 * @param arrivalTime
 	 */
-	public void setArrivalTime(Date arrivalTime) {
+	public void setArrivalTime(Time arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
@@ -119,7 +121,7 @@ public class AvailableBus {
 	 * 
 	 * @param depastureTime
 	 */
-	public void setDepartureTime(Date depastureTime) {
+	public void setDepartureTime(Time depastureTime) {
 		this.departureTime = depastureTime;
 	}
 
@@ -161,7 +163,7 @@ public class AvailableBus {
 	 * 
 	 * @return ticketPrice
 	 */
-	public long getTicketPrice() {
+	public Object getTicketPrice() {
 		return ticketPrice;
 	}
 
@@ -170,7 +172,7 @@ public class AvailableBus {
 	 * 
 	 * @param ticketPrice
 	 */
-	public void setTicketPrice(long ticketPrice) {
+	public void setTicketPrice(Object ticketPrice) {
 		this.ticketPrice = ticketPrice;
 	}
 
@@ -178,7 +180,7 @@ public class AvailableBus {
 	 * 
 	 * @return availableSeat
 	 */
-	public long getAvailableSeat() {
+	public Object getAvailableSeat() {
 		return availableSeat;
 	}
 
@@ -187,7 +189,7 @@ public class AvailableBus {
 	 * 
 	 * @param availableSeat
 	 */
-	public void setAvailableSeat(long availableSeat) {
+	public void setAvailableSeat(Object availableSeat) {
 		this.availableSeat = availableSeat;
 	}
 
